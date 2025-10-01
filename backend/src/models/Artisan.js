@@ -29,9 +29,15 @@ const Artisan = sequelize.define(
         email: {
             type: DataTypes.STRING(150), 
             unique: true,
+            validate: {
+                isEmail:true
+            }
         },
         site_web: {
-            type: DataTypes.STRING(150), 
+            type: DataTypes.STRING(150),
+            validate: {
+                isUrl:true
+            }
         },
         top: {
             type: DataTypes.BOOLEAN,
