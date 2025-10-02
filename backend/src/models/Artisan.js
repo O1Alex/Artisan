@@ -1,4 +1,4 @@
-const { Sequelize, DataTypes } = recquire ('sequelize');
+const { Sequelize, DataTypes } = require ('sequelize');
 const sequelize = new Sequelize('sqlite::memory:');
 
 const Artisan = sequelize.define(

@@ -17,31 +17,31 @@ sequelize
   .then(()=> {
     console.log('Connexion réussi.')
   })
-  .catch (err)=> {
+  .catch ((err)=> {
   console.error('Impossible de se connecter a la base de donnée', err);
-}
+})
 
 //synchroniser bdd avec serveur
 sequelize.sync({ alter:true})
   .then(()=> {
-    console.log ("")
+    console.log("modele synchrinisé avec la base de donnée")
   })
   .catch(()=>{
-    console.log("")
-  })
+    console.log("Erreur de synchronisation du modèle avec la base de deonnée")
+  });
 
 //ecouter le serveur
-app.use("api", router);
+app.use("/api", routes);
 
 //afficher erreur présente 
 app.use((err, req, res, next)=>{
     console.error('Erreur:' , err)
-    res.status(500).json
+    res.status(500).json({
       success: false,
       message: "Erreur server !",
-})
+    })
+      
+});
 
-app.listen
 
-module.exports= app;
-module.exports= PORT;
+module.exports= {app, PORT};
