@@ -32,3 +32,8 @@ CREATE TABLE appartient IF NOT EXISTS (
     FOREIGN KEY (id_categorie) REFERENCES categorie(id_categorie)
         ON DELETE CASCADE ON UPDATE CASCADE
 );
+
+CREATE TABLE contact IF NOT EXISTS (
+    id_contact
+    
+);
