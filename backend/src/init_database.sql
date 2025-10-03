@@ -4,36 +4,36 @@ USE Trouve_Artisan
 
 /*Table des catégories*/
 CREATE TABLE categorie IF NOT EXISTS (
-    id_categorie INT PRIMARY KEY AUTO_INCREMENT,
-    libelle VARCHAR(50) NOT NULL
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    artisan_id INT FOREIGN KEY AUTO_INCREMENT,
+    nom VARCHAR(100) NOT NULL,
 );
 
 /*Table des artisans*/
 CREATE TABLE artisan IF NOT EXISTS (
-    id_artisan INT PRIMARY KEY AUTO_INCREMENT,
+    id INT PRIMARY KEY AUTO_INCREMENT,
     nom VARCHAR(100) NOT NULL,
-    specialite VARCHAR(100) NOT NULL,
+    specialite_id INT FOREIGN KEY AUTO_INCREMENT,
     note DECIMAL(2,1),
-    ville VARCHAR(100),
-    a_propos TEXT,
-    email VARCHAR(150) UNIQUE,
+    ville VARCHAR(100) NOT NULL,
+    description VARCHAR(200),
+    email VARCHAR(100) UNIQUE NOT NULL,
     site_web VARCHAR(150),
-    top BOOLEAN DEFAULT FALSE
+    top_3 BOOLEAN DEFAULT FALSE
 );
 
-
-/*Table d'association appartient*/
-CREATE TABLE appartient IF NOT EXISTS (
-    id_artisan INT NOT NULL,
-    id_categorie INT NOT NULL,
-    PRIMARY KEY (id_artisan, id_categorie),
-    FOREIGN KEY (id_artisan) REFERENCES artisan(id_artisan)
-        ON DELETE CASCADE ON UPDATE CASCADE,
-    FOREIGN KEY (id_categorie) REFERENCES categorie(id_categorie)
-        ON DELETE CASCADE ON UPDATE CASCADE
+/*Table des specialites*/
+CREATE TABLE specialite IF NOT EXISTS (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    categorie_id INT FOREIGN KEY AUTO_INCREMENT,
+    nom VARCHAR(100) NOT NULL,
 );
 
+/*Table contact*/
 CREATE TABLE contact IF NOT EXISTS (
-    id_contact
-    
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    artisan_id INT FOREIGN KEY AUTO_INCREMENT,
+    client_Nom VARCHAR(100) NOT NULL,
+    client_Email VARCHAR(100) NOT NULL UNIQUE,
+    question VARCHAR(200) NOT NULL,
 );

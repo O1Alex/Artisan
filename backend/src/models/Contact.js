@@ -3,17 +3,34 @@ const sequelize = new Sequelize('sqlite::memory:');
 
 const Contact = sequelize.define(
     'Contact', {
-        customer_Name{
+        id: {
+            type: DataTypes.INTEGER,
+            autoIncrement: true,
+            primaryKey: true,
+        },
+        artisan_id: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            references: {
+                model: "Artisan",
+                key: "id",
+            },
+        },
+        client_Nom: {
             type: DataTypes.STRING(100),
             allownull: false,
         },
-        customer_Email{
+        client_Email: {
             type: DataTypes.STRING(100),
             allownull: false,
-             validate: {
-                isEmail:true
+            unique: true,
+            validate: {
+                isEmail:true,
             },
-
+        },
+        question: {
+             type: DataTypes.STRING(200),
+            allownull: false,
         },
     }
 );

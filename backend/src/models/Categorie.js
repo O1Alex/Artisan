@@ -3,13 +3,21 @@ const sequelize = new Sequelize('sqlite::memory:');
 
 const Categorie = sequelize.define(
     'Categorie', {
-        id_categorie: {
+        id: {
             type: DataTypes.INTEGER,
             autoIncrement: true,
             primaryKey: true,
         },
-        libelle:{
-            type: DataTypes.STRING(50),
+        artisan_id: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            references: {
+                model: "Artisan",
+                key: "id",
+            },
+        },
+        nom: {
+            type: DataTypes.STRING(100),
             allowNul: false,
         },
     }
