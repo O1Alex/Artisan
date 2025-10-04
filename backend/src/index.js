@@ -1,5 +1,5 @@
-const app = require("./server")
+const {app,PORT} = require("./server")
 
-app.listen(PORT, ()=>{
+app.listen(app.PORT, ()=>{
     console.log("Serveur démarré avec succès sur le"+ PORT)
 });

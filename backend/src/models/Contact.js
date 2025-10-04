@@ -1,7 +1,8 @@
 const { Sequelize, DataTypes } = require ('sequelize');
 const sequelize = new Sequelize('sqlite::memory:');
 
-const Contact = sequelize.define(
+module.exports = (sequelize) => {
+    const Contact = sequelize.define(
     'Contact', {
         id: {
             type: DataTypes.INTEGER,
@@ -16,11 +17,11 @@ const Contact = sequelize.define(
                 key: "id",
             },
         },
-        client_Nom: {
+        client_nom: {
             type: DataTypes.STRING(100),
             allownull: false,
         },
-        client_Email: {
+        client_email: {
             type: DataTypes.STRING(100),
             allownull: false,
             unique: true,
@@ -32,5 +33,5 @@ const Contact = sequelize.define(
              type: DataTypes.STRING(200),
             allownull: false,
         },
-    }
-);
+    });
+};

@@ -5,35 +5,35 @@ USE Trouve_Artisan
 /*Table des catégories*/
 CREATE TABLE categorie IF NOT EXISTS (
     id INT PRIMARY KEY AUTO_INCREMENT,
-    artisan_id INT FOREIGN KEY AUTO_INCREMENT,
     nom VARCHAR(100) NOT NULL,
+    description VARCHAR(200),
 );
 
 /*Table des artisans*/
 CREATE TABLE artisan IF NOT EXISTS (
     id INT PRIMARY KEY AUTO_INCREMENT,
     nom VARCHAR(100) NOT NULL,
-    specialite_id INT FOREIGN KEY AUTO_INCREMENT,
     note DECIMAL(2,1),
     ville VARCHAR(100) NOT NULL,
     description VARCHAR(200),
     email VARCHAR(100) UNIQUE NOT NULL,
     site_web VARCHAR(150),
-    top_3 BOOLEAN DEFAULT FALSE
+    FOREIGN KEY (specialite_id) REFERENCES specialite(id),
 );
 
 /*Table des specialites*/
 CREATE TABLE specialite IF NOT EXISTS (
     id INT PRIMARY KEY AUTO_INCREMENT,
-    categorie_id INT FOREIGN KEY AUTO_INCREMENT,
     nom VARCHAR(100) NOT NULL,
+    description VARCHAR(200),
+    FOREIGN KEY (categorie_id) REFERENCES categories(id),
 );
 
 /*Table contact*/
 CREATE TABLE contact IF NOT EXISTS (
     id INT PRIMARY KEY AUTO_INCREMENT,
-    artisan_id INT FOREIGN KEY AUTO_INCREMENT,
-    client_Nom VARCHAR(100) NOT NULL,
-    client_Email VARCHAR(100) NOT NULL UNIQUE,
+    FOREIGN KEY (artisan_id) REFERENCES artisan(id),
+    client_nom VARCHAR(100) NOT NULL,
+    client_email VARCHAR(100) NOT NULL UNIQUE,
     question VARCHAR(200) NOT NULL,
 );

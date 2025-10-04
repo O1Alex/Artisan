@@ -1,4 +1,4 @@
-const categorieService = recquire('../services/categorieService');
+const categorieService = require('../services/categorieService');
 
 const createCategorie = async(req , res)=> {
     res.json({

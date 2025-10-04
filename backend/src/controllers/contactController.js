@@ -1,4 +1,4 @@
-const contactService = recquire('../services/contactService');
+const contactService = require('../services/contactService');
 
 const createContact = async(req , res)=> {
     res.json({

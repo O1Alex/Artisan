@@ -1,4 +1,4 @@
-const specialiteService = recquire('../services/specialiteService');
+const specialiteService = require('../services/specialiteService');
 
 const createSpecialite = async(req , res)=> {
     res.json({

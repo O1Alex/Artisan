@@ -1,14 +1,14 @@
 const express = require ('express');
-const artisanRoute = require ('./artisanRoute');
-const categorieRoute = require ('./categorieRoute');
-const contactRoute = require('./contactRoute');
-const specialiteRoute = require('./specialiteRoute');
+const artisanRoutes = require ('./artisanRoutes');
+const categorieRoutes = require ('./categorieRoutes');
+const contactRoutes = require('./contactRoutes');
+const specialiteRoutes = require('./specialiteRoutes');
 
 const router = express.Router();
 
-router.use("/artisans", artisanRoute);
-router.use("/categories", categorieRoute);
-router.use("/contact", contactRoute);
-router.use("/specialites", specialiteRoute);
+router.use("/artisans", artisanRoutes);
+router.use("/categories", categorieRoutes);
+router.use("/contact", contactRoutes);
+router.use("/specialites", specialiteRoutes);
 
 module.exports = router;

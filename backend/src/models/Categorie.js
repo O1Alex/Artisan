@@ -1,7 +1,7 @@
 const { Sequelize, DataTypes } = require ('sequelize');
-const sequelize = new Sequelize('sqlite::memory:');
 
-const Categorie = sequelize.define(
+module.exports = (sequelize) =>{
+    const Categorie = sequelize.define(
     'Categorie', {
         id: {
             type: DataTypes.INTEGER,
@@ -20,7 +20,9 @@ const Categorie = sequelize.define(
             type: DataTypes.STRING(100),
             allowNul: false,
         },
-    }
-);
-
-module.exports= Categorie;
+        description: {
+            type: DataTypes.STRING(200),
+            allowNul: false,
+        },
+    });
+};

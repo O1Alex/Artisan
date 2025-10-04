@@ -1,4 +1,4 @@
-const artisanService = recquire('../services/artisanService');
+const artisanService = require('../services/artisanService');
 
 const createArtisan = async(req , res)=> {
     res.json({
@@ -7,17 +7,42 @@ const createArtisan = async(req , res)=> {
     });
 };
 const getAllArtisans = async(req , res)=> {
-    res.json({
-        success: true,
-        data: {},
-    });
+    try{ 
+        const artisans = await artisanService.getAllArtisans();
+
+        res.json({
+            success: true,
+             data: artisans,
+      });
+    } catch (error) {
+        console.error("Erreur lors de la rcuperations des artisans", error);
+        res.status(500).json({
+            success: false,
+             message: "Erreur serveur",
+      });
+
+    }
+   
 };
+
 const getArtisanById = async(req , res)=> {
-    res.json({
-        success: true,
-        data: {},
-    });
+    try{ 
+        const { id } = req.params;
+        const artisan = await artisanService.getArtisanById(id);
+        res.json({
+            success: true,
+             data: artisan,
+        });
+    } catch (error) {
+        console.error("Erreur lors de la rcuperations des artisans", error);
+        res.status(500).json({
+            success: false,
+             message: "Erreur serveur",
+      });
+
+    }
 };
+
 const updateArtisanById = async(req , res)=> {
     res.json({
         success: true,
@@ -25,12 +50,24 @@ const updateArtisanById = async(req , res)=> {
     });
 };
 const deleteArtisanById = async(req , res)=> {
-    res.json({
-        success: true,
-        data: {},
-    });
-};
+    try{ 
+        const { id } = req.params;
+        const artisan = await artisanService.deleteArtisanById(id);
+        await artisanService.deleteArtisanById(id);
+        
+        res.json({
+            success: true,
+             data: artisan,
+        });
+    } catch (error) {
+        console.error("Erreur lors de la suppression de l'artisan", error);
+        res.status(500).json({
+            success: false,
+             message: "Erreur serveur",
+      });
 
+    }
+};
 module.exports = {
     createArtisan, 
     getAllArtisans, 

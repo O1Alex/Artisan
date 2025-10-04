@@ -1,8 +1,7 @@
 const { Sequelize, DataTypes } = require ('sequelize');
-const Specialite = require('./Specialite');
-const sequelize = new Sequelize('sqlite::memory:');
 
-const Artisan = sequelize.define(
+module.exports = (sequelize)=> { 
+    const Artisan = sequelize.define(
     'Artisan', {
         id: {
             type: DataTypes.INTEGER,
@@ -49,11 +48,8 @@ const Artisan = sequelize.define(
                 isUrl:true
             }
         },
-        top_3: {
-            type: DataTypes.BOOLEAN,
-            defaultValue: false,
-        },
-    }
-);
+    });
+    return Artisan;
+};
 
 module.exports = Artisan;
