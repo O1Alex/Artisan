@@ -1,24 +1,76 @@
-const { deleteArtisanById } = require("../controllers/artisanController");
-const { Artisan } = require("../models");
+const { deleteArtisanById, 
+    createArtisan, 
+    getAllArtisans, 
+    updateArtisanById, 
+    getArtisanById, 
+    } = require("../controllers/artisanController");
+
+const { Artisan, Specialite } = require("../models");
 
 class artisanService {
-    static async getAllArtisan(){
-//Récupérer tous les artisans//
-        const artisans = Artisan.findAll();
-        return artisans;
-    }
-    static async getArtisanById(id){
+//Créer un artisan//
+    static async createArtisan(artisanData){
+        try {
+            const newArtisan = Artisan.create(artisanData);
+            return newArtisan;
+        } catch (err) {
+            throw new Error(`Erreur lors de la création de l'artisan ${err.message}` );
+        }
+    };
+
+//Récupérer tous les artisans//  
+    static async getAllArtisans(filter= {}){
+        try {
+            const options = { include : { model : Specialite } };
+                if (Object.keys(filter).length){
+                    options.wherehere = filter;
+                };
+            const artisans = Artisan.findAll(options);
+            return artisans;
+        } catch (err) {
+            throw new Error(`Erreur lors de la récupération des artisans ${err.message}`);
+        }
+    };
+
 //Récupérer artisan grace à l'id//
-        const artisan = Artisan.finbyPk(id);
-        return artisan;
+    static async getArtisanById(id){
+        try {
+            const artisan = Artisan.finbyPk(id, { include : { model : Specialite } });
+            return artisan;
+
+        } catch (err) {
+            throw new Error(`Erreur lors de la récupération de l'artisa n${err.message}`);
+        }
+    };
+
+//Modifier un artisan existant"
+    static async updateArtisanById(artisanData, id){
+        try {
+            const artisan = await Artisan.findbyPK(id);
+            if (!Artisan){
+                throw new Error(`Artisan ${id} non trouvé`);
+            }
+            await artisan.update(artisanData);
+            return {artisan, ...artisanData};
+        } catch (err) {
+            throw new Error(`Erreur lors de la modification de l'artisan${err.message}`);
+        }
     }
+
+//Supprimer un artisan par son id//    
     static async deleteArtisanById(id){
-//Supprimer un artisan par son id//
-        await Artisan.destroy({
-            where:{
-                id:id,
-            },
-        });
+        try {
+            const artisan = await Artisan.findbyPK(id);
+            if (!artisan) {
+                throw new Error(`Artisan ${id} non trouvé`);
+            }
+            await Artisan.destroy({
+                where:{id:id,},
+            });
+        return artisan;
+        } catch (error) {
+        throw new Error(`Erreur lors de la suppression de l'artisan${err.message}`);
+        } 
     }
 };
 module.exports = artisanService;
