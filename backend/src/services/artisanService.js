@@ -5,7 +5,7 @@ const { deleteArtisanById,
     getArtisanById, 
     } = require("../controllers/artisanController");
 
-const { Artisan, Specialite } = require("../models");
+const { Artisan, Specialite, Categorie } = require("../models");
 
 class artisanService {
 //Créer un artisan//
@@ -21,9 +21,10 @@ class artisanService {
 //Récupérer tous les artisans//  
     static async getAllArtisans(filter= {}){
         try {
-            const options = { include : { model : Specialite } };
-                if (Object.keys(filter).length){
-                    options.wherehere = filter;
+            const options = { 
+                include : { model : Specialite, include: { model: Categorie }} };
+                if (Object.keys(filter).length > 0){
+                    options.where = filter;
                 };
             const artisans = Artisan.findAll(options);
             return artisans;
@@ -65,7 +66,7 @@ class artisanService {
                 throw new Error(`Artisan ${id} non trouvé`);
             }
             await Artisan.destroy({
-                where:{id:id,},
+                where:{id:id},
             });
         return artisan;
         } catch (error) {

@@ -62,9 +62,7 @@ class categorieService {
                 throw new Error(`Categorie ${id} non trouvé`);
             }
          await Artisan.destroy({
-                where:{
-                   id:id,
-                },
+                where:{id:id},
         });
         return categorie;
         }catch (error) {

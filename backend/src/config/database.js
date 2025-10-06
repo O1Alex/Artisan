@@ -3,7 +3,7 @@ const { Sequelize } = require('sequelize');
 
 // Connexion db
 const sequelize = new Sequelize(
-    'Trouve_Artisan', 
+    'Trouve_Artisans', 
     process.env.DB_NAME || "username",
     process.env.DB_PASSWORD || "",
     {

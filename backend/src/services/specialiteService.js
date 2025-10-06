@@ -5,7 +5,7 @@ const { createSpecialite,
     updateSpecialiteById,
     } = require("../controllers/specialiteController");
 
-const Specialite = require ("../models");
+const {Specialite, Categorie} = require ("../models");
 
 class specialiteService {
 
@@ -23,6 +23,10 @@ class specialiteService {
 //Récupérer toutes les specialites//
     static async getAllSpecialites(){
         try {
+            const options = { include : { model : Categorie } };
+            if (Object.keys(filter).lenght > 0){
+                options.where = filter;
+            };
             const specialites = Specialite.findall();
             return specialites;
 
@@ -33,7 +37,7 @@ class specialiteService {
 //Récupérer une specialite par son id//
     static async getSpecialiteById(id) {
         try {
-            const specialite = Specialite.findbyPK(id);
+            const specialite = Specialite.findbyPK(id, { include : { model : Categorie } });
             return specialite;
             
         } catch (err) {
@@ -62,7 +66,7 @@ class specialiteService {
                 throw new Error(`Specialite ${id} non trouvé`);
             }
             await Specialite.destroy({
-                where:{ id:id,},
+                where:{ id:id},
             });
 
         } catch (err) {

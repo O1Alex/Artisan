@@ -5,7 +5,7 @@ const { createContact,
     updateContactById,
     } = require("../controllers/contactController");
 
-const Contact = require ("../models");
+const {Contact, Artisan} = require ("../models");
 
 class contactService {
 
@@ -22,6 +22,10 @@ class contactService {
 //Récupérer tous les contacts//
     static async getAllContacts() {
         try {
+            const options = { include : { model : Artisan } };
+            if (Object.keys(filter).lenght > 0){
+                options.where = filter;
+            };
             const contacts = Contact.findAll();
             return contacts; 
         } catch (err) {
@@ -31,7 +35,7 @@ class contactService {
 //Récupérer un contact par son id//
     static async getContactById(id){
         try {
-            const contact = Contact.findbyPK(id);
+            const contact = Contact.findbyPK(id, { include : { model : Artisan } });
             return contact;
         } catch (err) {
             throw new Error (`Erreur lors de la récuperation du contact${err.message}`);
@@ -58,7 +62,7 @@ class contactService {
                 throw new Error(`Contact ${id} non trouvé`);
             }
         await Artisan.destroy({
-                where:{ id:id,},
+                where:{ id:id},
             });
         } catch (err) {
             throw new Error (`Erreur lors de la suppresion du contact${err.message}`);

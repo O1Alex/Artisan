@@ -51,7 +51,7 @@ const getArtisanById = async(req , res)=> {
         });
     } catch (error) {
         console.error("Erreur lors de la rcuperations des artisans", error);
-        res.status(500).json({
+        res.status(error.message.includes("non trouvé") ? 404 :500).json({
             success: false,
              message: `Erreur serveur ${error.messsage}`,
         });
