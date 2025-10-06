@@ -11,16 +11,16 @@ class categorieService {
 
 //Créer une Catégorie//
     static async createCategorie(categorieData){
-            try {
-                const newCategorie = Contact.create(categorieData);
-                return newCategorie;
-            } catch (err) {
-                throw new Error (`Erreur lors de la creation de la categorie${err.message}`);
-            }
-        };
+        try {
+            const newCategorie = Categorie.create(categorieData);
+            return newCategorie;
+        } catch (err) {
+            throw new Error (`Erreur lors de la creation de la categorie${err.message}`);
+        }
+    };
 
 //Récupérer toutes les catégories//
-    static async getAllCategories{
+    static async getAllCategories(){
         try {
             const categories = Categorie.findAll();
             return categories;
