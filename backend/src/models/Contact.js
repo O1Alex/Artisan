@@ -33,4 +33,5 @@ module.exports = (sequelize) => {
             allownull: false,
         },
     });
+    return Contact;
 };

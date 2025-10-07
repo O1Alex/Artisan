@@ -5,9 +5,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "server": "nodemon src/index.js",
-    "init-db":  "mysql -u root -p < src/init-db.sql"
+    "init-db": "mysql -u root -p < src/init-db.sql"
   },
-
   "author": "",
   "license": "ISC",
   "description": "",
@@ -16,6 +15,7 @@
     "express": "^5.1.0",
     "mariadb": "^3.4.5",
     "mysql2": "^3.15.1",
+    "mysql3": "^0.7.4",
     "sequelize": "^6.37.7"
   },
   "devDependencies": {

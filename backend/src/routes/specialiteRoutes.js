@@ -1,4 +1,4 @@
-const express = recquire('express');
+const express = require('express');
 
 const  { getAllSpecialites, 
          createSpecialite, 
@@ -13,6 +13,6 @@ specialiteRoutes.post("/", createSpecialite)
 specialiteRoutes.get("/", getAllSpecialites);
 specialiteRoutes.get("/:id", getSpecialiteById);
 specialiteRoutes.put("/:id", updateSpecialiteById);
-specialiteRoutess.delete("/:id", deleteSpecialiteById);
+specialiteRoutes.delete("/:id", deleteSpecialiteById);
 
 module.exports = specialiteRoutes;

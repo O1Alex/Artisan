@@ -1,8 +1,8 @@
 const express = require ('express');
 const artisanRoutes = require ('./artisanRoutes');
-const categorieRoutes = require ('./categorieRoutes');
 const contactRoutes = require('./contactRoutes');
 const specialiteRoutes = require('./specialiteRoutes');
+const categorieRoutes = require('./categorieRoutesjs');
 
 const router = express.Router();
 

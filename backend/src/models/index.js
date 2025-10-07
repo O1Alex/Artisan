@@ -1,9 +1,10 @@
 const sequelize = require('../config/database');
 
-const Artisan = require('./Artisan')(sequelize);
 const Categorie = require('./Categorie')(sequelize);
-const Contact = require('./Contact')(sequelize);
 const Specialite = require('./Specialite')(sequelize);
+const Artisan = require('./Artisan')(sequelize);
+const Contact = require('./Contact')(sequelize);
+
 
 //Relations entre les models//
 Categorie.hasMany(Specialite, {foreignKey: 'categorie_id',});

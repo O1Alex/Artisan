@@ -17,4 +17,5 @@ module.exports = (sequelize) =>{
             allowNul: false,
         },
     });
+    return Categorie;
 };

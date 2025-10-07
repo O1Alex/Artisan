@@ -25,4 +25,5 @@ module.exports = (sequelize) => {
             allowNul: false,
         },
     });
+    return Specialite;
 };

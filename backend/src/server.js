@@ -1,6 +1,6 @@
 const express = require ('express');
 require ('dotenv').config;
-const { sequelize } = require("./config/database");
+const { sequelize } = require("./models/index");
 const routes = require ("./routes/index");
 
 const app = express();
@@ -20,14 +20,14 @@ sequelize
   .catch ((err)=> {
   console.error('Impossible de se connecter a la base de donnée', err);
 })
-
+console.log(sequelize);
 //synchroniser bdd avec serveur
 sequelize.sync({ alter:true})
   .then(()=> {
-    console.log("modele synchrinisé avec la base de donnée")
+    console.log("modele synchronisé avec la base de donnée")
   })
   .catch(()=>{
-    console.log("Erreur de synchronisation du modèle avec la base de deonnée")
+    console.log("Erreur de synchronisation du modèle avec la base de donnée")
   });
 
 //ecouter le serveur

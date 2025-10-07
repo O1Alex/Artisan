@@ -52,5 +52,3 @@ module.exports = (sequelize)=> {
     });
     return Artisan;
 };
-
-module.exports = Artisan;
