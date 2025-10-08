@@ -14,7 +14,7 @@ const createCategorie = async(req , res)=> {
         console.error("Erreur lors de la création de la catégorie", error);
         res.status(500).json({
             success: false,
-             message: `Erreur serveur ${error.messsage}`,
+             message: `Erreur serveur ${error.message}`,
         });
     }
 };
@@ -31,7 +31,7 @@ const getAllCategories = async(req , res)=> {
         console.error("Erreur lors de la récupération des catégories", error);
         res.status(500).json({
             success: false,
-             message: `Erreur serveur ${error.messsage}`,
+             message: `Erreur serveur ${error.message}`,
         });        
     }
 };
@@ -50,7 +50,7 @@ const getCategorieById = async(req , res)=> {
         console.error("Erreur lors de la récupération de la catégorie", error);
         res.status(500).json({
             success: false,
-             message: `Erreur serveur ${error.messsage}`,
+             message: `Erreur serveur ${error.message}`,
         });        
     }
 };
@@ -60,7 +60,7 @@ const updateCategorieById = async(req , res)=> {
         const { id } = req.params;
         const categorieData = req.body;
 
-        const updatedCategorie = await categorieService.updateCategorieById(categorieData);
+        const updatedCategorie = await categorieService.updateCategorieById(categorieData, error);
 
         res.json({
             success: true,
@@ -70,7 +70,7 @@ const updateCategorieById = async(req , res)=> {
         console.error("Erreur lors de la modification de la catégorie", error);
         res.status(500).json({
             success: false,
-             message: `Erreur serveur ${error.messsage}`,
+             message: `Erreur serveur ${error.message}`,
         });        
     }
 };
@@ -89,7 +89,7 @@ const deleteCategorieById = async(req , res)=> {
         console.error("Erreur lors de la suppression de la catégorie", error);
         res.status(500).json({
             success: false,
-            message: `Erreur serveur ${error.messsage}`,
+            message: `Erreur serveur ${error.message}`,
         });        
     }
 };

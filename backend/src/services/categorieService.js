@@ -14,6 +14,7 @@ class categorieService {
         try { 
             const newCategorie = Categorie.create(categorieData);
             return newCategorie;
+            
         } catch (err) {
             throw new Error (`Erreur lors de la creation de la categorie${err.message}`);
         }
@@ -24,8 +25,9 @@ class categorieService {
         try {
             const categories = Categorie.findAll();
             return categories;
+
         } catch (err) {
-            throw new Error(`Erreur lors de la récupération des artisans ${err.message}`);
+            throw new Error(`Erreur lors de la récupération des categories ${err.message}`);
         }
     };
 
@@ -35,7 +37,7 @@ class categorieService {
             const categorie = Categorie.finbyPK(id)
             return categorie;
             
-        } catch (error) {
+        } catch (err) {
             throw new Error(`Erreur lors de la récupération de la catégorie ${err.message}`);
         }
     };
@@ -49,7 +51,8 @@ class categorieService {
             }
             await categorie.update(categorieData);
             return{categorie, ...categorieData};
-        } catch (error) {
+
+        } catch (err) {
             throw new Error(`Erreur lors de la modification de la categorie ${err.message}`);
         }
     };
@@ -61,11 +64,12 @@ class categorieService {
         if (!categorie) {
                 throw new Error(`Categorie ${id} non trouvé`);
             }
-         await Artisan.destroy({
+         await Categorie.destroy({
                 where:{id:id},
         });
         return categorie;
-        }catch (error) {
+
+        }catch (err) {
             throw new Error(`Erreur lors de la suppression de la categorie${err.message}`);
         }
     };

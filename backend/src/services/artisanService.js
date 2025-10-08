@@ -13,6 +13,7 @@ class artisanService {
         try {
             const newArtisan = Artisan.create(artisanData);
             return newArtisan;
+            
         } catch (err) {
             throw new Error(`Erreur lors de la création de l'artisan ${err.message}` );
         }
@@ -28,6 +29,7 @@ class artisanService {
                 };
             const artisans = Artisan.findAll(options);
             return artisans;
+        
         } catch (err) {
             throw new Error(`Erreur lors de la récupération des artisans ${err.message}`);
         }
@@ -53,6 +55,7 @@ class artisanService {
             }
             await artisan.update(artisanData);
             return {artisan, ...artisanData};
+
         } catch (err) {
             throw new Error(`Erreur lors de la modification de l'artisan${err.message}`);
         }
@@ -68,10 +71,12 @@ class artisanService {
             await Artisan.destroy({
                 where:{id:id},
             });
-        return artisan;
-        } catch (error) {
+            return artisan;
+
+        } catch (err) {
         throw new Error(`Erreur lors de la suppression de l'artisan${err.message}`);
         } 
     }
 };
+
 module.exports = artisanService;

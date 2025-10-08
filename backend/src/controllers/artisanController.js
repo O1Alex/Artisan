@@ -10,14 +10,14 @@ const createArtisan = async(req , res)=> {
             success: true,
             data: newArtisan,
         });
-    } catch (err){
+    } catch (error){
      console.error("Erreur lors de la création de l'artisan", error);
         res.status(500).json({
             success: false,
-             message: `Erreur serveur ${error.messsage}`,
+             message: `Erreur serveur ${error.message}`,
         });
     }
-};9
+};
 
 
 const getAllArtisans = async(req , res)=> {
@@ -28,15 +28,13 @@ const getAllArtisans = async(req , res)=> {
             success: true,
              data: artisans,
       });
-    } catch (err) {
+    } catch (error) {
         console.error("Erreur lors de la rcuperations des artisans", error);
         res.status(500).json({
             success: false,
-             message: `Erreur serveur ${error.messsage}`,
+             message: `Erreur serveur ${error.message}`,
       });
-
-    }
-   
+    } 
 };
 
 const getArtisanById = async(req , res)=> {
@@ -53,7 +51,7 @@ const getArtisanById = async(req , res)=> {
         console.error("Erreur lors de la rcuperations des artisans", error);
         res.status(error.message.includes("non trouvé") ? 404 :500).json({
             success: false,
-             message: `Erreur serveur ${error.messsage}`,
+             message: `Erreur serveur ${error.message}`,
         });
     }
 };
@@ -73,7 +71,7 @@ const updateArtisanById = async(req , res)=> {
         console.error("Erreur lors de la modification de l'artisan", error);
         res.status(500).json({
             success: false,
-             message: `Erreur serveur ${error.messsage}`,
+             message: `Erreur serveur ${error.message}`,
         });
     }
     
@@ -92,7 +90,7 @@ const deleteArtisanById = async(req , res)=> {
         console.error("Erreur lors de la suppression de l'artisan", error);
         res.status(500).json({
             success: false,
-             message: `Erreur serveur ${error.messsage}`,
+             message: `Erreur serveur ${error.message}`,
       });
 
     }

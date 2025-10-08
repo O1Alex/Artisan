@@ -21,6 +21,7 @@ sequelize
   console.error('Impossible de se connecter a la base de donnée', err);
 })
 console.log(sequelize);
+
 //synchroniser bdd avec serveur
 sequelize.sync({ alter:true})
   .then(()=> {
@@ -39,8 +40,7 @@ app.use((err, req, res, next)=>{
     res.status(500).json({
       success: false,
       message: "Erreur server !",
-    })
-      
+    }) 
 });
 
 

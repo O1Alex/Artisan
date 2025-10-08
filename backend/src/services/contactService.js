@@ -5,7 +5,7 @@ const { createContact,
     updateContactById,
     } = require("../controllers/contactController");
 
-const {Contact, Artisan} = require ("../models");
+const { Contact, Artisan } = require ("../models");
 
 class contactService {
 
@@ -14,20 +14,23 @@ class contactService {
         try {
             const newContact = Contact.create(contactData);
             return newContact;
+            
         } catch (err) {
             throw new Error (`Erreur lors de la creation du contact${err.message}`);
         }
     };
 
 //Récupérer tous les contacts//
-    static async getAllContacts() {
+    static async getAllContacts(filter={}) {
         try {
-            const options = { include : { model : Artisan } };
-            if (Object.keys(filter).lenght > 0){
+            const options = { 
+                include : { model : Artisan } };
+                if (Object.keys(filter).lenght > 0){
                 options.where = filter;
             };
-            const contacts = Contact.findAll();
+            const contacts = Contact.findAll(options);
             return contacts; 
+
         } catch (err) {
             throw new Error (`Erreur lors de la recuperations des contacts${err.message}`);
         }
@@ -37,6 +40,7 @@ class contactService {
         try {
             const contact = Contact.findbyPK(id, { include : { model : Artisan } });
             return contact;
+
         } catch (err) {
             throw new Error (`Erreur lors de la récuperation du contact${err.message}`);
         }
@@ -50,6 +54,7 @@ class contactService {
             }
             await contact.update(contactData);
             return {contact, ...contactData};
+
         } catch (err) {
             throw new Error (`Erreur lors de la modification du contact${err.message}`);
         }
@@ -61,9 +66,10 @@ class contactService {
             if (!Contact){
                 throw new Error(`Contact ${id} non trouvé`);
             }
-        await Artisan.destroy({
+            await Artisan.destroy({
                 where:{ id:id},
             });
+
         } catch (err) {
             throw new Error (`Erreur lors de la suppresion du contact${err.message}`);
         }

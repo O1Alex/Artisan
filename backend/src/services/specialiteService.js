@@ -5,7 +5,7 @@ const { createSpecialite,
     updateSpecialiteById,
     } = require("../controllers/specialiteController");
 
-const {Specialite, Categorie} = require ("../models");
+const { Specialite, Categorie } = require ("../models");
 
 class specialiteService {
 
@@ -14,26 +14,26 @@ class specialiteService {
         try {
             const newSpecialite = Specialite.create(specialiteData);
             return newSpecialite;
-            
         } catch (err) {
             throw new Error (`Erreur lors de la création de la specialite${err.message}`);
         }
     };
 
 //Récupérer toutes les specialites//
-    static async getAllSpecialites(){
+    static async getAllSpecialites(filter= {}){
         try {
-            const options = { include : { model : Categorie } };
-            if (Object.keys(filter).lenght > 0){
-                options.where = filter;
-            };
-            const specialites = Specialite.findall();
+            const options = { 
+                include : { model : Categorie } };
+                if (Object.keys(filter).lenght > 0){
+                    options.where = filter;
+                };
+            const specialites = Specialite.findAll(options);
             return specialites;
-
         } catch (err) {
             throw new Error (`Erreur lors de la récupération des specialites${err.message}`);
         }
     };
+    
 //Récupérer une specialite par son id//
     static async getSpecialiteById(id) {
         try {
