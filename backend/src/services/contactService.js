@@ -14,7 +14,7 @@ class contactService {
         try {
             const newContact = Contact.create(contactData);
             return newContact;
-            
+
         } catch (err) {
             throw new Error (`Erreur lors de la creation du contact${err.message}`);
         }
@@ -28,7 +28,7 @@ class contactService {
                 if (Object.keys(filter).lenght > 0){
                 options.where = filter;
             };
-            const contacts = Contact.findAll(options);
+            const contacts = await Contact.findAll(options);
             return contacts; 
 
         } catch (err) {
@@ -38,7 +38,7 @@ class contactService {
 //Récupérer un contact par son id//
     static async getContactById(id){
         try {
-            const contact = Contact.findbyPK(id, { include : { model : Artisan } });
+            const contact = await Contact.findByPk(id, { include : { model : Artisan } });
             return contact;
 
         } catch (err) {
@@ -48,12 +48,12 @@ class contactService {
 //Modifier un contact//
     static async updateContactById(id, contactData){
         try {
-            const contact = Contact.findbyPK(id);
+            const contact = await Contact.findByPk(id);
             if (!Contact){
                 throw new Error(`Contact ${id} non trouvé`);
             }
             await contact.update(contactData);
-            return {contact, ...contactData};
+            return {...contact.get(), ...contactData};
 
         } catch (err) {
             throw new Error (`Erreur lors de la modification du contact${err.message}`);
@@ -62,13 +62,12 @@ class contactService {
 //Supprimer un contact//
     static async deleteContactById(id) {
         try {
-            const contact = Contact.findbyPK(id);
+            const contact = await Contact.findByPk(id);
             if (!Contact){
                 throw new Error(`Contact ${id} non trouvé`);
             }
-            await Artisan.destroy({
-                where:{ id:id},
-            });
+            await contact.destroy();
+            return contact;
 
         } catch (err) {
             throw new Error (`Erreur lors de la suppresion du contact${err.message}`);

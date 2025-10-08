@@ -14,7 +14,7 @@ class categorieService {
         try { 
             const newCategorie = Categorie.create(categorieData);
             return newCategorie;
-            
+
         } catch (err) {
             throw new Error (`Erreur lors de la creation de la categorie${err.message}`);
         }
@@ -34,7 +34,7 @@ class categorieService {
 //Récupérer une catégorie par son id//
     static async getCategorieById(id) {
         try {
-            const categorie = Categorie.finbyPK(id)
+            const categorie = Categorie.findByPk(id)
             return categorie;
             
         } catch (err) {
@@ -45,12 +45,12 @@ class categorieService {
 //Modifier une catégorie existante//
     static async updateCategorieById(id, categorieData){
         try {
-            const categorie = await Categorie.finbyPK(id);
+            const categorie = await Categorie.findByPk(id);
             if (!Categorie){
                 throw new Error(`Categorie ${id} non trouvé`);
             }
             await categorie.update(categorieData);
-            return{categorie, ...categorieData};
+            return {categorie, ...categorieData};
 
         } catch (err) {
             throw new Error(`Erreur lors de la modification de la categorie ${err.message}`);
@@ -60,7 +60,7 @@ class categorieService {
 //Supprimer une catégorie//
     static async deleteCategorieById(id) {
         try {
-            const categorie = await Categorie.finbyPK(id)
+            const categorie = await Categorie.findByPk(id)
         if (!categorie) {
                 throw new Error(`Categorie ${id} non trouvé`);
             }

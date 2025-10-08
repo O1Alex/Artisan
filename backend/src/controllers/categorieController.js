@@ -60,7 +60,7 @@ const updateCategorieById = async(req , res)=> {
         const { id } = req.params;
         const categorieData = req.body;
 
-        const updatedCategorie = await categorieService.updateCategorieById(categorieData, error);
+        const updatedCategorie = await categorieService.updateCategorieById(id, categorieData);
 
         res.json({
             success: true,

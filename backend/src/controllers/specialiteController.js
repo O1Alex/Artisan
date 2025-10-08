@@ -55,7 +55,7 @@ const updateSpecialiteById = async(req , res)=> {
         const { id } = req.params;
         const specialiteData = req.body;
 
-        const updatedSpecialite = await specialiteService.updateSpecialiteById(specialiteData);
+        const updatedSpecialite = await specialiteService.updateSpecialiteById(id, specialiteData);
         
         res.json({
             success: true,

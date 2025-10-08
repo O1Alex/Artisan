@@ -37,7 +37,7 @@ class specialiteService {
 //Récupérer une specialite par son id//
     static async getSpecialiteById(id) {
         try {
-            const specialite = Specialite.findbyPK(id, { include : { model : Categorie } });
+            const specialite = Specialite.findByPk(id, { include : { model : Categorie } });
             return specialite;
             
         } catch (err) {
@@ -47,12 +47,12 @@ class specialiteService {
 //Modifier une specialite//
     static async updateSpecialiteById(id, specialiteData){
         try {
-            const specialite = Specialite.findbyPK(id);
+            const specialite = await Specialite.findByPk(id);
             if (!Specialite){
                 throw new Error(`Specialite ${id} non trouvé`);
             }
             await specialite.update(specialiteData);
-            return{specialite, ...specialiteData};
+            return {specialite, ...specialiteData};
 
         } catch (err) {
             throw new Error (`Erreur lors de la modification de la specialite${err.message}`);
@@ -61,7 +61,7 @@ class specialiteService {
 //Supprimer une specialite//
     static async deleteSpecialiteById(id){
         try {
-            const specialite = Specialite.findbyPK(id);
+            const specialite = await Specialite.findByPk(id);
             if (!Specialite){
                 throw new Error(`Specialite ${id} non trouvé`);
             }

@@ -57,7 +57,7 @@ const updateContactById = async(req , res)=> {
         const contactData = req.body;
         const { id } = req.params;
 
-        const updatedContact = await contactService.updateContactById(contactData);
+        const updatedContact = await contactService.updateContactById(id, contactData);
 
         res.json({
             success: true,

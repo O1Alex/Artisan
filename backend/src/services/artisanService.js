@@ -11,7 +11,7 @@ class artisanService {
 //Créer un artisan//
     static async createArtisan(artisanData){
         try {
-            const newArtisan = Artisan.create(artisanData);
+            const newArtisan = await Artisan.create(artisanData);
             return newArtisan;
             
         } catch (err) {
@@ -27,7 +27,7 @@ class artisanService {
                 if (Object.keys(filter).length > 0){
                     options.where = filter;
                 };
-            const artisans = Artisan.findAll(options);
+            const artisans = await Artisan.findAll(options);
             return artisans;
         
         } catch (err) {
@@ -38,7 +38,7 @@ class artisanService {
 //Récupérer artisan grace à l'id//
     static async getArtisanById(id){
         try {
-            const artisan = Artisan.finbyPk(id, { include : { model : Specialite } });
+            const artisan = await Artisan.findByPk(id, { include : { model : Specialite } });
             return artisan;
 
         } catch (err) {
@@ -47,14 +47,14 @@ class artisanService {
     };
 
 //Modifier un artisan existant"
-    static async updateArtisanById(artisanData, id){
+    static async updateArtisanById(id, artisanData){
         try {
-            const artisan = await Artisan.findbyPK(id);
+            const artisan = await Artisan.findByPk(id);
             if (!Artisan){
                 throw new Error(`Artisan ${id} non trouvé`);
             }
             await artisan.update(artisanData);
-            return {artisan, ...artisanData};
+            return {...artisan.get(), ...artisanData};
 
         } catch (err) {
             throw new Error(`Erreur lors de la modification de l'artisan${err.message}`);
@@ -64,7 +64,7 @@ class artisanService {
 //Supprimer un artisan par son id//    
     static async deleteArtisanById(id){
         try {
-            const artisan = await Artisan.findbyPK(id);
+            const artisan = await Artisan.findByPk(id);
             if (!artisan) {
                 throw new Error(`Artisan ${id} non trouvé`);
             }

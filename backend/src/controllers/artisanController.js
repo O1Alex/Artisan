@@ -61,7 +61,7 @@ const updateArtisanById = async(req , res)=> {
         const { id } = req.params;
         const artisanData = req.body;
 
-        const updatedArtisan = await artisanService.updateArtisanById(artisanData);
+        const updatedArtisan = await artisanService.updateArtisanById(id, artisanData);
 
         res.json({
             success: true,
