@@ -49,6 +49,16 @@ module.exports = (sequelize)=> {
                 isUrl:true
             }
         },
-    });
+        top: {
+            type: DataTypes.BOOLEAN, 
+            default: false,
+        },
+    },
+    {
+      tableName: "artisan",
+      freezeTableName: true,
+      timestamps: true,
+    }
+    );
     return Artisan;
 };

@@ -6,7 +6,14 @@ USE Trouve_Artisans;
 -- CREATE TABLE categorie IF NOT EXISTS (
 --     id INT PRIMARY KEY AUTO_INCREMENT,
 --     nom VARCHAR(100) NOT NULL,
---     description VARCHAR(200),
+-- );
+
+-- /*Table des specialites*/
+-- CREATE TABLE specialite IF NOT EXISTS (
+--     id INT PRIMARY KEY AUTO_INCREMENT,
+--     nom VARCHAR(100) NOT NULL,
+--     categorie_id INT,
+--     FOREIGN KEY (categorie_id) REFERENCES categories(id),
 -- );
 
 -- /*Table des artisans*/
@@ -18,20 +25,15 @@ USE Trouve_Artisans;
 --     description VARCHAR(200),
 --     email VARCHAR(100) UNIQUE NOT NULL,
 --     site_web VARCHAR(150),
+--     top BOOLEAN DEFAULT FALSE,
+--     specialite_id INT,
 --     FOREIGN KEY (specialite_id) REFERENCES specialite(id),
--- );
-
--- /*Table des specialites*/
--- CREATE TABLE specialite IF NOT EXISTS (
---     id INT PRIMARY KEY AUTO_INCREMENT,
---     nom VARCHAR(100) NOT NULL,
---     description VARCHAR(200),
---     FOREIGN KEY (categorie_id) REFERENCES categories(id),
 -- );
 
 -- /*Table contact*/
 -- CREATE TABLE contact IF NOT EXISTS (
 --     id INT PRIMARY KEY AUTO_INCREMENT,
+--     artisan_id INT,
 --     FOREIGN KEY (artisan_id) REFERENCES artisan(id),
 --     client_nom VARCHAR(100) NOT NULL,
 --     client_email VARCHAR(100) NOT NULL UNIQUE,

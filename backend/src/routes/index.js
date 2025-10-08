@@ -6,9 +6,9 @@ const categorieRoutes = require('./categorieRoutesjs');
 
 const router = express.Router();
 
-router.use("/artisans", artisanRoutes);
-router.use("/categories", categorieRoutes);
+router.use("/artisan", artisanRoutes);
+router.use("/categorie", categorieRoutes);
 router.use("/contact", contactRoutes);
-router.use("/specialites", specialiteRoutes);
+router.use("/specialite", specialiteRoutes);
 
 module.exports = router;

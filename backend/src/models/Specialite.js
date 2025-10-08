@@ -8,6 +8,10 @@ module.exports = (sequelize) => {
             autoIncrement: true,
             primaryKey: true,
         },
+        nom:{
+            type: DataTypes.STRING(50),
+            allowNul: false,
+        }, 
         categorie_id: {
             type: DataTypes.INTEGER,
             allowNull: false,
@@ -15,15 +19,13 @@ module.exports = (sequelize) => {
                 model: "Categorie",
                 key: "id",
             },
-        },
-        nom:{
-            type: DataTypes.STRING(50),
-            allowNul: false,
-        },
-        description: {
-            type: DataTypes.STRING(200),
-            allowNul: false,
-        },
-    });
+        },    
+    },
+    {
+      tableName: "specialite",
+      freezeTableName: true,
+      timestamps: true,
+    }
+);
     return Specialite;
 };

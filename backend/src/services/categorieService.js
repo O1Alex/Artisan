@@ -5,13 +5,13 @@ const { createCategorie,
     updateCategorieById,
     } = require("../controllers/categorieController");
 
-const Categorie = require ("../models");
+const { Categorie } = require("../models");
 
 class categorieService {
 
 //Créer une Catégorie//
     static async createCategorie(categorieData){
-        try {
+        try { 
             const newCategorie = Categorie.create(categorieData);
             return newCategorie;
         } catch (err) {

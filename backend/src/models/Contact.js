@@ -32,6 +32,12 @@ module.exports = (sequelize) => {
              type: DataTypes.STRING(200),
             allownull: false,
         },
-    });
+    },
+    {
+      tableName: "contact",
+      freezeTableName: true,
+      timestamps: true,
+    }
+    );
     return Contact;
 };
