@@ -1,3 +1,5 @@
+const contactValidator = require ("../middlewares/validators");
+
 const express = require('express');
 
 const   { createContact, 
@@ -9,10 +11,10 @@ const   { createContact,
 
 const contactRoutes = express.Router()
 
-contactRoutes.post("/", createContact)
+contactRoutes.post("/",contactValidator.create, createContact)
 contactRoutes.get("/", getAllContacts);
-contactRoutes.get("/:id", getContactById);
-contactRoutes.put("/:id", updateContactById);
-contactRoutes.delete("/:id", deleteContactById);
+contactRoutes.get("/:id",contactValidator.getById, getContactById);
+contactRoutes.put("/:id",contactValidator.update, updateContactById);
+contactRoutes.delete("/:id",contactValidator.delete, deleteContactById);
 
 module.exports = contactRoutes;

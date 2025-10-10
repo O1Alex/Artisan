@@ -1,3 +1,5 @@
+const categorieValidator = require ("../middlewares/validators");
+
 const express = require('express');
 
 const { createCategorie, 
@@ -9,10 +11,10 @@ const { createCategorie,
 
 const categorieRoutes = express.Router()
 
-categorieRoutes.post("/", createCategorie)
+categorieRoutes.post("/",categorieValidator.create, createCategorie)
 categorieRoutes.get("/", getAllCategories);
-categorieRoutes.get("/:id", getCategorieById);
-categorieRoutes.put("/:id", updateCategorieById);
-categorieRoutes.delete("/:id", deleteCategorieById);
+categorieRoutes.get("/:id",categorieValidator.getById, getCategorieById);
+categorieRoutes.put("/:id",categorieValidator.update, updateCategorieById);
+categorieRoutes.delete("/:id",categorieValidator.delete, deleteCategorieById);
 
 module.exports = categorieRoutes;

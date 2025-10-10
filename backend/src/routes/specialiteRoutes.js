@@ -1,3 +1,5 @@
+const specialiteValidator = require ('../middlewares/validators');
+
 const express = require('express');
 
 const  { getAllSpecialites, 
@@ -9,10 +11,10 @@ const  { getAllSpecialites,
 
 const specialiteRoutes = express.Router()
 
-specialiteRoutes.post("/", createSpecialite)
+specialiteRoutes.post("/",specialiteValidator.create, createSpecialite)
 specialiteRoutes.get("/", getAllSpecialites);
-specialiteRoutes.get("/:id", getSpecialiteById);
-specialiteRoutes.put("/:id", updateSpecialiteById);
-specialiteRoutes.delete("/:id", deleteSpecialiteById);
+specialiteRoutes.get("/:id",specialiteValidator.getById, getSpecialiteById);
+specialiteRoutes.put("/:id",specialiteValidator.update, updateSpecialiteById);
+specialiteRoutes.delete("/:id",specialiteValidator.delete, deleteSpecialiteById);
 
 module.exports = specialiteRoutes;
