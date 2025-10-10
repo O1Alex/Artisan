@@ -1,3 +1,5 @@
+const artisanValidator = require ("../middlewares/validators");
+
 const express = require('express');
 
 const { createArtisan, 
@@ -9,10 +11,10 @@ const { createArtisan,
 
 const artisanRoutes = express.Router();
 
-artisanRoutes.post("/", createArtisan);
+artisanRoutes.post("/",artisanValidator.create, createArtisan);
 artisanRoutes.get("/", getAllArtisans);
-artisanRoutes.get("/:id", getArtisanById);
-artisanRoutes.put("/:id", updateArtisanById);
-artisanRoutes.delete("/:id", deleteArtisanById);
+artisanRoutes.get("/:id",artisanValidator.getById, getArtisanById);
+artisanRoutes.put("/:id",artisanValidator.update, updateArtisanById);
+artisanRoutes.delete("/:id",artisanValidator.delete, deleteArtisanById);
 
 module.exports = artisanRoutes;

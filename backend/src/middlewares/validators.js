@@ -15,18 +15,60 @@ const validate = (req, res, next) => {
 //Concernant les routes de Artisan
 const artisanValidator ={
     create: [
-     
+         body("nom")
+            .notEmpty()
+            .withMessage("Le nom de l'artisan est recquis.")
+            .isLength({ min: 1, max: 60})
+            .withMessage("Le nom doit comporter entre 1 et 60 caracteres")
+            .sanitizer(),
+         body("ville")
+            .notEmpty()
+            .withMessage("La ville est recquise.")
+            .isLength({ min: 1, max: 60})
+            .withMessage("Le nom doit comporter entre 1 et 60 caracteres")
+            .sanitizer(),
+        body("email")
+            .notEmpty()
+            .isEmail()
+            .withMessage("Email recquis.")
+            .sanitizer(),
+        body("site_web")
+            .isURL()
+            .withMessage("Site Web recquis.")
+            .sanitizer(),
+        validate,
     ],
     getById: [
-        param("id").isInt().withMessage("Id la categorie invalide"),
+        param("id").isInt().withMessage("Id de l'artisan invalide"),
         validate,
     ],
     update:[
-       param("id").isInt().withMessage("Id la categorie invalide"),
+        param("id").isInt().withMessage("Id de l'artisan invalide"),
+        body("nom")
+            .notEmpty()
+            .withMessage("Le nom de l'artisan est recquis.")
+            .isLength({ min: 1, max: 60})
+            .withMessage("Le nom doit comporter entre 1 et 60 caracteres")
+            .sanitizer(),
+        body("ville")
+            .notEmpty()
+            .withMessage("La ville est recquise.")
+            .isLength({ min: 1, max: 60})
+            .withMessage("Le nom doit comporter entre 1 et 60 caracteres")
+            .sanitizer(),
+        body("email")
+            .notEmpty()
+            .isEmail()
+            .withMessage("Email recquis.")
+            .sanitizer(),
+        body("site_web")
+            .isURL()
+            .withMessage("Site Web recquis.")
+            .sanitizer(),
         validate,
     ],
     delete:[
-        param("id").isInt().withMessage("Id la categorie invalide"),
+        param("id").isInt().withMessage("Id de l'artisan invalide"),
         validate,
     ],
 };
@@ -37,22 +79,22 @@ const categorieValidator ={
         body("nom")
             .notEmpty()
             .withMessage("Le nom de la catégorie est recquise.")
-            .isLenght({ min: 1, max: 60})
+            .isLength({ min: 1, max: 60})
             .withMessage("Le nom doit comporter entre 1 et 60 caracteres")
             .sanitizer(),
         validate,
     ],
 
     getById: [
-        param("id").isInt().withMessage("Id la categorie invalide"),
+        param("id").isInt().withMessage("Id de la categorie invalide"),
         validate,
     ],
     update:[
-        param("id").isInt().withMessage("Id la categorie invalide"),
+        param("id").isInt().withMessage("Id de la categorie invalide"),
         body("nom")
             .notEmpty()
             .withMessage("Le nom de la catégorie est recquise.")
-            .isLenght()
+            .isLength()
             .withMessage("Le nom doit comporter entre 1 et 60 caracteres")
             .sanitizer(),
         validate,
@@ -60,7 +102,7 @@ const categorieValidator ={
 
     ],
     delete:[
-        param("id").isInt().withMessage("Id la categorie invalide"),
+        param("id").isInt().withMessage("Id de la categorie invalide"),
         validate,
     ],
 };
@@ -71,52 +113,50 @@ const contactValidator ={
     create: [
         body("client_nom")
             .notEmpty()
-            .withMessage("Votre nom est recquis.")
-            .isLenght({ min: 1, max: 60})
-            .withMessage("Votre nom doit comporter entre 1 et 60 caracteres")
+            .withMessage("Nom recquis.")
+            .isLength({ min: 1, max: 60})
+            .withMessage("Le nom doit comporter entre 1 et 60 caracteres")
             .sanitizer(),
         body("client_email")
             .notEmpty()
-            .withMessage("Votre email est recquis.")
-            .isLenght({ min: 1, max: 100})
-            .withMessage("Votre email doit comporter entre 1 et 100 caracteres")
+            .isEmail()
+            .withMessage("Email recquis.")
             .sanitizer(),
         body("question")
             .notEmpty()
             .withMessage("Une question est recquise.")
-            .isLenght({ min: 1, max: 100})
-            .withMessage("Votre question doit comporter entre 1 et 100 caracteres")
+            .isLength({ min: 1, max: 100})
+            .withMessage("La question doit comporter entre 1 et 100 caracteres")
             .sanitizer(),
         validate,       
     ],
     getById: [
-        param("id").isInt().withMessage("Id la categorie invalide"),
-        body("client_nom")
-            .notEmpty()
-            .withMessage("Votre nom est recquis.")
-            .isLenght({ min: 1, max: 60})
-            .withMessage("Votre nom doit comporter entre 1 et 60 caracteres")
-            .sanitizer(),
-        body("client_email")
-            .notEmpty()
-            .withMessage("Votre email est recquis.")
-            .isLenght({ min: 1, max: 100})
-            .withMessage("Votre email doit comporter entre 1 et 100 caracteres")
-            .sanitizer(),
-        body("question")
-            .notEmpty()
-            .withMessage("Une question est recquise.")
-            .isLenght({ min: 1, max: 100})
-            .withMessage("Votre question doit comporter entre 1 et 100 caracteres")
-            .sanitizer(),
+        param("id").isInt().withMessage("Id du contact invalide"),
         validate,
     ],
     update:[
-        param("id").isInt().withMessage("Id la categorie invalide"),
+        param("id").isInt().withMessage("Id du contact invalide"),
+        body("client_nom")
+            .notEmpty()
+            .withMessage("Le nom est recquis.")
+            .isLength({ min: 1, max: 60})
+            .withMessage("Le nom doit comporter entre 1 et 60 caracteres")
+            .sanitizer(),
+        body("client_email")
+            .notEmpty()
+            .isEmail()
+            .withMessage("Email recquis.")
+            .sanitizer(),
+        body("question")
+            .notEmpty()
+            .withMessage("Question recquise.")
+            .isLength({ min: 1, max: 100})
+            .withMessage("La question doit comporter entre 1 et 100 caracteres")
+            .sanitizer(),
         validate,
     ],
     delete:[
-        param("id").isInt().withMessage("Id la categorie invalide"),
+        param("id").isInt().withMessage("Id du contact invalide"),
         validate,
     ],
 };
@@ -128,27 +168,27 @@ const specialiteValidator ={
         body("nom")
             .notEmpty()
             .withMessage("Le nom de la catégorie est recquise.")
-            .isLenght({ min: 1, max: 60})
+            .isLength({ min: 1, max: 60})
             .withMessage("Le nom doit comporter entre 1 et 60 caracteres")
             .sanitizer(),
         validate,
     ],
     getById: [
-        param("id").isInt().withMessage("Id la categorie invalide"),
+        param("id").isInt().withMessage("Id de la specialite invalide"),
         validate,
     ],
     update:[
-        param("id").isInt().withMessage("Id la categorie invalide"),
+        param("id").isInt().withMessage("Id de la specialite invalide"),
         body("nom")
             .notEmpty()
             .withMessage("Le nom de la catégorie est recquise.")
-            .isLenght({ min: 1, max: 60})
+            .isLength({ min: 1, max: 60})
             .withMessage("Le nom doit comporter entre 1 et 60 caracteres")
             .sanitizer(),
         validate,
     ],
     delete:[
-        param("id").isInt().withMessage("Id la categorie invalide"),
+        param("id").isInt().withMessage("Id de la specialite invalide"),
         validate,
     ],
 };
