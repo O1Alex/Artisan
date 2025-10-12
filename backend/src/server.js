@@ -4,6 +4,7 @@ const { sequelize } = require("./models/index");
 const { corsOptions } = require('./config/app');
 const routes = require("./routes/index");
 const helmet = require('helmet');
+const cors = require ('cors');
 
 const app = express();
 

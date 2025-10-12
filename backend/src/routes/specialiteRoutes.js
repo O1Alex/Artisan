@@ -1,4 +1,4 @@
-const specialiteValidator = require ('../middlewares/validators');
+const { specialiteValidator } = require ('../middlewares/validators');
 
 const express = require('express');
 

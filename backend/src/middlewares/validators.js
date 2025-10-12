@@ -1,4 +1,4 @@
-const { body, validationResult } = require('express-validator');
+const { body, param, validationResult } = require('express-validator');
 
 
 const validate = (req, res, next) => {
@@ -20,25 +20,25 @@ const artisanValidator ={
             .withMessage("Le nom de l'artisan est recquis.")
             .isLength({ min: 1, max: 60})
             .withMessage("Le nom doit comporter entre 1 et 60 caracteres")
-            .sanitizer(),
+            .escape(),
          body("ville")
             .notEmpty()
             .withMessage("La ville est recquise.")
             .isLength({ min: 1, max: 60})
             .withMessage("Le nom doit comporter entre 1 et 60 caracteres")
-            .sanitizer(),
+            .escape(),
         body("email")
             .notEmpty()
             .isEmail()
             .withMessage("Email recquis.")
-            .sanitizer(),
+            .escape(),
         body("site_web")
             .isURL()
             .withMessage("Site Web recquis.")
-            .sanitizer(),
+            .escape(),
         validate,
     ],
-    getById: [
+    getById:[
         param("id").isInt().withMessage("Id de l'artisan invalide"),
         validate,
     ],
@@ -49,22 +49,22 @@ const artisanValidator ={
             .withMessage("Le nom de l'artisan est recquis.")
             .isLength({ min: 1, max: 60})
             .withMessage("Le nom doit comporter entre 1 et 60 caracteres")
-            .sanitizer(),
+            .escape(),
         body("ville")
             .notEmpty()
             .withMessage("La ville est recquise.")
             .isLength({ min: 1, max: 60})
             .withMessage("Le nom doit comporter entre 1 et 60 caracteres")
-            .sanitizer(),
+            .escape(),
         body("email")
             .notEmpty()
             .isEmail()
             .withMessage("Email recquis.")
-            .sanitizer(),
+            .escape(),
         body("site_web")
             .isURL()
             .withMessage("Site Web recquis.")
-            .sanitizer(),
+            .escape(),
         validate,
     ],
     delete:[
@@ -81,7 +81,7 @@ const categorieValidator ={
             .withMessage("Le nom de la catégorie est recquise.")
             .isLength({ min: 1, max: 60})
             .withMessage("Le nom doit comporter entre 1 et 60 caracteres")
-            .sanitizer(),
+            .escape(),
         validate,
     ],
 
@@ -96,7 +96,7 @@ const categorieValidator ={
             .withMessage("Le nom de la catégorie est recquise.")
             .isLength()
             .withMessage("Le nom doit comporter entre 1 et 60 caracteres")
-            .sanitizer(),
+            .escape(),
         validate,
         
 
@@ -116,18 +116,18 @@ const contactValidator ={
             .withMessage("Nom recquis.")
             .isLength({ min: 1, max: 60})
             .withMessage("Le nom doit comporter entre 1 et 60 caracteres")
-            .sanitizer(),
+            .escape(),
         body("client_email")
             .notEmpty()
             .isEmail()
             .withMessage("Email recquis.")
-            .sanitizer(),
+            .escape(),
         body("question")
             .notEmpty()
             .withMessage("Une question est recquise.")
             .isLength({ min: 1, max: 100})
             .withMessage("La question doit comporter entre 1 et 100 caracteres")
-            .sanitizer(),
+            .escape(),
         validate,       
     ],
     getById: [
@@ -141,18 +141,18 @@ const contactValidator ={
             .withMessage("Le nom est recquis.")
             .isLength({ min: 1, max: 60})
             .withMessage("Le nom doit comporter entre 1 et 60 caracteres")
-            .sanitizer(),
+            .escape(),
         body("client_email")
             .notEmpty()
             .isEmail()
             .withMessage("Email recquis.")
-            .sanitizer(),
+            .escape(),
         body("question")
             .notEmpty()
             .withMessage("Question recquise.")
             .isLength({ min: 1, max: 100})
             .withMessage("La question doit comporter entre 1 et 100 caracteres")
-            .sanitizer(),
+            .escape(),
         validate,
     ],
     delete:[
@@ -170,7 +170,7 @@ const specialiteValidator ={
             .withMessage("Le nom de la catégorie est recquise.")
             .isLength({ min: 1, max: 60})
             .withMessage("Le nom doit comporter entre 1 et 60 caracteres")
-            .sanitizer(),
+            .escape(),
         validate,
     ],
     getById: [
@@ -184,7 +184,7 @@ const specialiteValidator ={
             .withMessage("Le nom de la catégorie est recquise.")
             .isLength({ min: 1, max: 60})
             .withMessage("Le nom doit comporter entre 1 et 60 caracteres")
-            .sanitizer(),
+            .escape(),
         validate,
     ],
     delete:[

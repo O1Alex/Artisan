@@ -1,4 +1,4 @@
-const contactValidator = require ("../middlewares/validators");
+const { contactValidator } = require ("../middlewares/validators");
 
 const express = require('express');
 
