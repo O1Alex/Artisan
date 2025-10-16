@@ -6,9 +6,9 @@ import HeaderRight from './child-cpns/header-right';
 
 const AppHeader = memo(() => {
     return (
-        <header> 
-            <nav class="navbar navbar-expand-lg bg-body-tertiary">
-                <div class="container-fluid">
+        <header className="header"> 
+            <nav className="navbar navbar-expand-lg bg-white">
+                <div className="container-fluid">
                     <HeaderLeft />
                     <HeaderCenter />
                     <HeaderRight />

@@ -1,55 +1,44 @@
-import React, { memo, useState, useRef, useEffect } from "react";
-import { Link } from "react-router";
+import React, { memo, useEffect, useState } from "react";
+import { Link, useLocation } from "react-router";
+import apiService from "../../../../services/api";
 
 const categories = [
     {
         "id" : 1,
-        "nom" : "Batîment"
+        "nom" : "Bâtiment"
     }, {
         "id" : 2,
         "nom" : "Service"
     },
 ]
 const HeaderCenter = memo(() => {
-    const [show, setShow] = useState(false);
+    const location = useLocation();
+    const [categories, setCategories] = useState([]);
+       
+    useEffect (()=> {
+        const fetchCategories = async () => {
+            try {
+                const res = await apiService.getCategories();
+                setCategories(res);
+            } catch (error) {
+                console.log("Erreur lors du 'fetch' Categories:", error);
+            }
+        }
+        fetchCategories();
+    }, []);
+
     return (
        <div className="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul className="navbar-nav me-auto mb-2 mb-lg-0">  
-                <li className="nav-item dropdown">
-                    <button  
-                        className="nav-link dropdown-toggle"
-                        onClick={()=> setShow(!show)} 
-                    >
-                            Artisan
-                    </button>
-                    <ul 
-                    className="dropdown-menu" 
-                    style={{display: show ? "block" : "none"}}>  
-                        {categories.map((item) => 
-                            (<Link className="" to ={`/categorie/${item.id}`}> {item.nom} </Link>
+            <div className="navbar-nav me-auto mb-2 mb-lg-0">  
+                    {categories.map((categorie) => (
+                        <li className="nave-item" key={categorie.id}>
+                            <Link className={`nav-link  ${location.pathname === `/categorie/${categorie.id}` ? 'active' : ''}`}
+                            to ={`/categorie/${categorie.id}`}> 
+                                {categorie.nom} 
+                            </Link>
+                        </li>
                     ))}
-                    </ul>
-                  
-                        {/* <ul className="dropdown-menu" style={{display: show ? "block" : "none"}}>
-                            <li>
-                                <a className="dropdown-item" href="#">
-                                    Action
-                                </a>
-                            </li>
-                            <li>
-                                <a className="dropdown-item" href="#">
-                                    Another action
-                                </a>
-                            </li>
-                            <li></li>
-                            <li>
-                                <a className="dropdown-item" href="#">
-                                    Something else here
-                                </a>
-                            </li>
-                        </ul> */}
-                </li>
-            </ul>
+            </div>
       </div>
     );
 });
