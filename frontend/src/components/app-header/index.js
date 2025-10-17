@@ -6,7 +6,7 @@ import HeaderRight from './child-cpns/header-right';
 
 const AppHeader = memo(() => {
     return (
-        <header className="header"> 
+        <header className="header mt-1 mb-3"> 
             <nav className="navbar navbar-expand-lg bg-white">
                 <div className="container-fluid">
                     <HeaderLeft />
@@ -14,7 +14,8 @@ const AppHeader = memo(() => {
                     <HeaderRight />
                 </div>
             </nav>
-        </header>)
+        </header>
+    )
 });
 
 export default AppHeader;

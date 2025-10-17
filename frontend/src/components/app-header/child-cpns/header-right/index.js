@@ -7,7 +7,8 @@ const navigate = useNavigate();
 
     const handleSearch = (e) => {
         e.preventDefault();
-        const query = e.target.element[0].value;
+        console.log(e);
+        const query = e.target.elements[0].value;
         navigate(`/artisan?search=${query}`);
     }
 
@@ -19,7 +20,7 @@ const navigate = useNavigate();
             type="search" 
             placeholder="Rechercher un Artisan" 
             aria-label="Search"/>
-        <button className="btn btn-outline-primary" type="submit">Search</button>
+        {/* <button className="btn btn-outline-primary" type="submit">Search</button> */}
         </form>
     </div>
     )

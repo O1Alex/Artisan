@@ -4,8 +4,8 @@ import { Link } from "react-router";
 const HeaderLeft = memo(() => {
     return (
         <div>
-        <Link to="/" className="navbar-brand">
-            <img src="Logo.png" alt="trouve_ton_artisan" width={200} Link/>
+        <Link to="/" className="navbar-brand ">
+            <img src="Logo.png" alt="trouve_ton_artisan" width={250} Link/>
         </Link>
 
          <button className="navbar-toggler"

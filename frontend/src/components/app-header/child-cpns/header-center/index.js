@@ -29,7 +29,7 @@ const HeaderCenter = memo(() => {
 
     return (
        <div className="collapse navbar-collapse" id="navbarSupportedContent">
-            <div className="navbar-nav me-auto mb-2 mb-lg-0">  
+            <div className="navbar-nav mx-auto">  
                     {categories.map((categorie) => (
                         <li className="nave-item" key={categorie.id}>
                             <Link className={`nav-link  ${location.pathname === `/categorie/${categorie.id}` ? 'active' : ''}`}

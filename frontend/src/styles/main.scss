@@ -1,9 +1,24 @@
-@import "../node_modules/bootstrap/scss/bootstrap";
+@import "~bootstrap/scss/bootstrap";
+
+//Couleurs
+$primary-color: #0074c7;
+$secondary-color: #00497c;
+$light-color: #f1f8fc;
+$dark-color: #384050;
+$danger-color: #cd2c2e;
 
 
+// Police
+
+
+// Global
+
+
+
+// Header
 .header{
-    box-shadow: 0, 2px 4px rgba(0, 0, 0, 0.1);
-    margin-bottom: 2rem;
+    box-shadow: 0, 2px 10px rgba(0, 0, 0, 0.20);
+    color: $dark-color;
 
     .search-form{
         .btn{
@@ -13,6 +28,39 @@
         .form-control{
             border-radius: 10px 10px;
         }
+    }
+    .navbar-toggler{
+        background-color: $light-color;
+        border : 1px, solid, $dark-color;
+        }
+   
 
+}
+
+
+
+
+
+// Footer
+.footer{
+    background-color: $primary-color;
+    color: white;
+    padding: 3rem 0;
+    margin-top: 3rem;
+   
+    .nav-link{
+        color: white;
+        padding: 4px;
+        &:hover{
+            color: white;
+        }
+        &:focus{
+            color: white;
+            font-weight: bold;
+        }
+    }
+
+    .legal{
+        border-top: 1px solid white;
     }
 }
