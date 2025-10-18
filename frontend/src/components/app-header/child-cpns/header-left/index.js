@@ -5,7 +5,7 @@ const HeaderLeft = memo(() => {
     return (
         <div>
         <Link to="/" className="navbar-brand ">
-            <img src="Logo.png" alt="trouve_ton_artisan" width={250} Link/>
+            <img src="Logo.png" alt="trouve_ton_artisan" width={275} Link/>
         </Link>
 
          <button className="navbar-toggler"
