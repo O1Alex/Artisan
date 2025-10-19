@@ -10,7 +10,7 @@ function App() {
   return (
     <div className="App">
       <AppHeader />
-        <div className='page mt-2 mb-2'>
+        <div className='page mt-5 mb-'>
           {useRoutes(routes)}
         </div>
       <AppFooter />

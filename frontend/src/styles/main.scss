@@ -1,5 +1,13 @@
 @import "~bootstrap/scss/bootstrap";
 
+@font-face {
+  font-family: 'MyFont'; 
+  src: url('../assets/fonts/Graphik-Black-Trial.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
 //Couleurs
 $primary-color: #0074c7;
 $secondary-color: #00497c;
@@ -7,11 +15,10 @@ $light-color: #f1f8fc;
 $dark-color: #384050;
 $danger-color: #cd2c2e;
 
-
-// Police
-
-
-// Global
+//Gobal
+*{
+    font-family: 'Myfont';
+}
 
 
 
@@ -22,11 +29,11 @@ $danger-color: #cd2c2e;
 
     .search-form{
         .btn{
-            border-radius: 10px 10px;
+            border-radius: 10px;
         }
 
         .form-control{
-            border-radius: 10px 10px;
+            border-radius: 10px;
         }
     }
     .navbar-toggler{
@@ -57,10 +64,40 @@ $danger-color: #cd2c2e;
         &:focus{
             color: white;
             font-weight: bold;
+            border: 2px solid#f1f8fc;
+            border-radius: 10px;
         }
     }
 
     .legal{
         border-top: 1px solid white;
+    }
+}
+
+
+//Page d'Accueil
+.hompage{
+    p{
+        color: $primary-color;
+    }
+
+    h2{
+        color: $secondary-color;
+        margin-bottom: 20px;
+    }
+  
+    h4{
+        color: $secondary-color;
+        margin-top: 30px;
+    }
+
+}
+
+//Page Erreur
+.erreur{
+    p{
+        font-size: x-large;
+        color: $dark-color;
+        margin-top: 20px;
     }
 }
