@@ -2,15 +2,7 @@ import React, { memo, useEffect, useState } from "react";
 import { Link, useLocation } from "react-router";
 import apiService from "../../../../services/api";
 
-const categories = [
-    {
-        "id" : 1,
-        "nom" : "Bâtiment"
-    }, {
-        "id" : 2,
-        "nom" : "Service"
-    },
-]
+
 const HeaderCenter = memo(() => {
     const location = useLocation();
     const [categories, setCategories] = useState([]);

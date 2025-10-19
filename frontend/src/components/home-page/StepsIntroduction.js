@@ -2,7 +2,7 @@ import React, { memo } from 'react';
 
 const StepsIntroduction = memo (({items}) => {
     return (
-        <div className=' hompage container'>
+        <div className=' homepage container'>
             <section>
                 <h2>Comment trouver mon artisan ?</h2>
                 <p>Nous allons maintenant voir comment trouver son artisan en seulement 4 étapes simples et intuitives.</p>

@@ -2,7 +2,7 @@
 
 @font-face {
   font-family: 'MyFont'; 
-  src: url('../assets/fonts/Graphik-Black-Trial.otf') format('opentype');
+  src: url('../assets/fonts/Graphik-Medium-Trial.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 }
@@ -76,7 +76,7 @@ $danger-color: #cd2c2e;
 
 
 //Page d'Accueil
-.hompage{
+.homepage{
     p{
         color: $primary-color;
     }
