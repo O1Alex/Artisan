@@ -1,4 +1,4 @@
-/*INSERT INTO AFIN D'ALIMENTER LA BDD*/
+-- /*INSERT INTO AFIN D'ALIMENTER LA BDD*/
 
  INSERT INTO categorie (nom) VALUES
 ('Alimentation'),

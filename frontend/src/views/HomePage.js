@@ -1,10 +1,13 @@
 import { memo } from 'react';
 import StepsIntroduction from '../components/home-page/StepsIntroduction';
+import TopArtisansZone from '../components/home-page/TopArtisansZone';
 
 const HomePage = memo (() => {
 
     const steps =[
-        {   stepHeader:"1- Choisir la catégorie d'artisant dans le menu",
+        
+        {   
+            stepHeader:"1- Choisir la catégorie d'artisanat dans le menu",
             stepDescription:"Il suffira ici de choisir une des 4 catégories afin d'accéder aux artisans qui répondront a vos attentes."
         },{
             stepHeader:"2- Choisir un artisan",
@@ -19,8 +22,9 @@ const HomePage = memo (() => {
     ]
 
     return ( 
-        <div className='container'> 
+        <div className='homepage container'> 
             <StepsIntroduction items={steps}/>
+            <TopArtisansZone />
         </div> 
     );
 });
