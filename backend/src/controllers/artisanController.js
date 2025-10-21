@@ -1,3 +1,4 @@
+const { matchedData } = require('express-validator');
 const artisanService = require('../services/artisanService');
 
 const createArtisan = async(req , res)=> {
@@ -19,10 +20,15 @@ const createArtisan = async(req , res)=> {
     }
 };
 
-
 const getAllArtisans = async(req , res)=> {
     try{ 
-        const artisans = await artisanService.getAllArtisans();
+        const data = matchedData(req, { locations: ["query"] });
+        const { top, limit } = data;
+        const filters ={};
+        if (top) filters.top = top;
+        console.log("filters",filters);
+
+        const artisans = await artisanService.getAllArtisans(filters, limit);
 
         res.json({
             success: true,

@@ -1,4 +1,4 @@
-const { body, param, validationResult } = require('express-validator');
+const { body, param, query, validationResult } = require('express-validator');
 
 
 const validate = (req, res, next) => {
@@ -6,7 +6,10 @@ const validate = (req, res, next) => {
         if (!errors.isEmpty()) {
             return res.status(404).json({
                 success: false,
-                errors: errors,
+                errors: errors.array().map((err) => ({
+                    field: err.param,
+                    message: err.msg,
+                })),
             });
         }
         next();
@@ -14,6 +17,19 @@ const validate = (req, res, next) => {
 
 //Concernant les routes de Artisan
 const artisanValidator ={
+    get: [
+        query("top")
+            .optional()
+            .isBoolean()
+            .withMessage("Le paramètre 'top' doit etre un booléen")
+            .toBoolean(),
+        query("limit")
+            .optional()
+            .isInt({ min: 1})
+            .withMessage("Le parametre 'limit' doit être un entier positif")
+            .toInt(),
+        validate,
+    ],
     create: [
          body("nom")
             .notEmpty()
@@ -34,7 +50,7 @@ const artisanValidator ={
             .escape(),
         body("site_web")
             .isURL()
-            .withMessage("Site Web recquis.")
+            .withMessage("Site Web recquis")
             .escape(),
         validate,
     ],
@@ -63,7 +79,7 @@ const artisanValidator ={
             .escape(),
         body("site_web")
             .isURL()
-            .withMessage("Site Web recquis.")
+            .withMessage("Site Web recquis")
             .escape(),
         validate,
     ],

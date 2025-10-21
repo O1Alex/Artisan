@@ -14,7 +14,7 @@ const apiService = {
         return res.data.data
     },
     getTopArtisans: async () => {
-        const res = await apiClient.get("/artisan");
+        const res = await apiClient.get("/artisan", {params: {top: true, limit: 3} });
         return res.data.data
     }
 

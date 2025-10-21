@@ -93,18 +93,60 @@ $danger-color: #cd2c2e;
 
 }
 
-.featured-artisans {
-    margin: 3rem;
-    border-top: 2px solid $danger-color;
-    
-    h2{
-        margin: 3rem;
-        
-    }
+.card-container{
+    display: flex;
+    justify-content: center;
 }
 
 
 
+.featured-artisans {
+    margin: 3rem;
+    border-top: 2px solid $danger-color;
+    
+    .artisan-card{
+        border-radius: 10px;
+        border: 3px solid $dark-color;
+        width: 275px;
+        box-shadow: 10px 10px 10px $dark-color;
+        &:hover{
+            background-color: $light-color;
+        }
+        h2{
+        margin: 3rem;
+        color: $secondary-color;
+        }
+            .artisan-name{
+                color: $secondary-color;
+                font-weight: bold;
+                border-bottom: 1px solid $danger-color;
+            }
+            .artisan-specialite{
+                color: $primary-color;
+                font-weight: bold;
+                font-size: larger;
+            }
+            .location-text{
+                font-weight: bold;
+                font-size: larger;
+            }
+            .artisan-location{
+            display: flex;
+            justify-content: center;
+
+            svg{
+            margin-right: 0.6rem;
+            position: relative;
+            top: 3px;
+            }
+            .artisan-rating{
+                svg{
+                    color: $primary-color;
+                }
+            }
+        }
+    }
+}
 
 
 //Page Erreur

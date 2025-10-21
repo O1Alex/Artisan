@@ -23,11 +23,11 @@ useEffect(() => {
 
     return (
         <section className='featured-artisans'>
-            <h2>Les Artisans du Mois !</h2>
+            <h2 className='p-5'>Les Artisans du Mois !</h2>
             <div className='row'>
                 {loading ? (<p>Chargement des artisans...</p>) : 
                 (topArtisans.map((artisan) => 
-                        (<div key={artisan.id} className='col-md-4'>
+                        (<div key={artisan.id} className='card-container col-md-4'>
                             <ArtisanCard artisan={artisan}/>
                         </div>)
                 ))} 

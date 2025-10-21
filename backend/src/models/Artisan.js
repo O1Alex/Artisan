@@ -36,7 +36,7 @@ module.exports = (sequelize)=> {
         },
         email: {
             type: DataTypes.STRING(100), 
-            // unique: true,
+            unique: true,
             allowNull: false,
             validate: {
                 isEmail:true
@@ -44,10 +44,10 @@ module.exports = (sequelize)=> {
         },
         site_web: {
             type: DataTypes.STRING(150),
-            // allowNull: true,
-            // validate: {
-            //     isUrl:true
-            // }
+            allowNull: true,
+            validate: {
+                isUrl:true
+            }
             
         },
         top: {
