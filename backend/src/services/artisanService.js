@@ -20,13 +20,16 @@ class artisanService {
     };
 
 //Récupérer tous les artisans//  
-    static async getAllArtisans(filter= {}, limit){
+    static async getAllArtisans(filter= {}, limit, categorie_id){
         try {
+            const include =[{ model : Specialite }];
+            if (categorie_id){
+                [0]
+            }        
             const options = { 
-                include : { model : Specialite, include: { model: Categorie } },
+                include,
                 order: [["note", "DESC"]],
             };
-
                 //Ajout des filtres
                 if (Object.keys(filter).length > 0){
                     options.where = filter;

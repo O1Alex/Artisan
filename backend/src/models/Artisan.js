@@ -44,7 +44,6 @@ module.exports = (sequelize)=> {
         },
         site_web: {
             type: DataTypes.STRING(150),
-            allowNull: true,
             validate: {
                 isUrl:true
             }
@@ -53,6 +52,7 @@ module.exports = (sequelize)=> {
         top: {
             type: DataTypes.BOOLEAN, 
             default: false,
+            allowNull: false,
         },
     },
     {

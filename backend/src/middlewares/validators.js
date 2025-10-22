@@ -19,7 +19,7 @@ const validate = (req, res, next) => {
 const artisanValidator ={
     get: [
         query("top")
-            .optional()
+            .notEmpty()
             .isBoolean()
             .withMessage("Le paramètre 'top' doit etre un booléen")
             .toBoolean(),
@@ -27,6 +27,11 @@ const artisanValidator ={
             .optional()
             .isInt({ min: 1})
             .withMessage("Le parametre 'limit' doit être un entier positif")
+            .toInt(),
+        query("categorie_id")
+            .optional()
+            .isInt()
+            .withMessage("Le parametre 'categorie_id' doit être un entier")
             .toInt(),
         validate,
     ],
@@ -49,6 +54,7 @@ const artisanValidator ={
             .withMessage("Email recquis.")
             .escape(),
         body("site_web")
+            .optional()
             .isURL()
             .withMessage("Site Web recquis")
             .escape(),

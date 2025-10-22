@@ -1,0 +1,51 @@
+import { memo, useEffect, useState } from 'react';
+import { useParams } from 'react-router';
+import apiService from '../services/api';
+import ArtisanCard from '../components/home-page/ArtisanCard';
+
+const CategoriePage = memo (() => {
+    const { id } = useParams();
+    const [categorie, setCategorie]= useState(null);
+    const [artisans, setArtisans]= useState([]);
+    const [loading, setLoading]= useState(true);
+    useEffect(() => {
+        const fetchArtisansByCategorie = async () => {
+            try {
+                setLoading(true);
+                const categorieResult = await apiService.getCategorieById(id);
+                setCategorie(categorieResult);
+                const artisansResult = await apiService.getArtisansbyCategorieID(id);
+                setArtisans(artisansResult);
+                setLoading(false);
+            } catch (err) {
+               console.error("Erreur lors du chargement des artisans:", err);
+               setLoading(false);
+            }
+        };
+        if (id) {
+            fetchArtisansByCategorie();
+        }
+    }, [id]);
+
+    return ( 
+        <div className='container'> 
+            <section>
+                <h1>{`Nos artisans dans le domaine "${categorie?.nom}"`}</h1>
+                <p className='text-intro'>text-intro</p>
+            </section>
+            <section className='featured-artisans'>
+                <h1 className='p-5'>Les Artisans du Mois !</h1>
+                <div className='row'>
+                    {loading ? (<p>Chargement des artisans...</p>) : 
+                    (artisans.map((artisan) => 
+                        (<div key={artisan.id} className='card-container col-md-3'>
+                            <ArtisanCard artisan={artisan}/>
+                        </div>)
+                    ))} 
+                </div>
+            </section> 
+        </div> 
+    );
+});
+
+export default CategoriePage;

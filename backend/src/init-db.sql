@@ -25,7 +25,7 @@ CREATE TABLE artisan IF NOT EXISTS (
     description VARCHAR(200),
     email VARCHAR(100) UNIQUE NOT NULL,
     site_web VARCHAR(150),
-    top BOOLEAN DEFAULT FALSE,
+    top BOOLEAN DEFAULT FALSE NOT NULL,
     specialite_id INT,
     FOREIGN KEY (specialite_id) REFERENCES specialite(id),
 );
