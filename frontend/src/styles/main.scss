@@ -148,9 +148,24 @@ $danger-color: #cd2c2e;
     }
 }
 
+//Cards
 .star-rating{
     color: $primary-color;
 }
+
+//Categorie Page
+.categorie-header{
+    h1{
+        color:$secondary-color;
+    }
+    p{
+        color: $primary-color;
+        font-style: italic;
+    }
+
+}
+
+
 //Page Erreur
 .erreur{
     p{

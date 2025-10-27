@@ -14,7 +14,7 @@ const CategoriePage = memo (() => {
                 setLoading(true);
                 const categorieResult = await apiService.getCategorieById(id);
                 setCategorie(categorieResult);
-                const artisansResult = await apiService.getArtisansbyCategorieID(id);
+                const artisansResult = await apiService.getArtisansByCategorieId(id);
                 setArtisans(artisansResult);
                 setLoading(false);
             } catch (err) {
@@ -29,16 +29,17 @@ const CategoriePage = memo (() => {
 
     return ( 
         <div className='container'> 
-            <section>
+            <section className='categorie-header'>
                 <h1>{`Nos artisans dans le domaine "${categorie?.nom}"`}</h1>
-                <p className='text-intro'>text-intro</p>
+                <p className='text-intro font-weight-light font-italic pt-4'>
+                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex eaquat." 
+                </p>
             </section>
             <section className='featured-artisans'>
-                <h1 className='p-5'>Les Artisans du Mois !</h1>
                 <div className='row'>
                     {loading ? (<p>Chargement des artisans...</p>) : 
                     (artisans.map((artisan) => 
-                        (<div key={artisan.id} className='card-container col-md-3'>
+                        (<div key={artisan.id} className='card-container col-md-4'>
                             <ArtisanCard artisan={artisan}/>
                         </div>)
                     ))} 

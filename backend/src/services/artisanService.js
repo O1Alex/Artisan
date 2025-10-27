@@ -24,7 +24,7 @@ class artisanService {
         try {
             const include =[{ model : Specialite }];
             if (categorie_id){
-                [0]
+                include[0].where ={categorie_id};
             }        
             const options = { 
                 include,
