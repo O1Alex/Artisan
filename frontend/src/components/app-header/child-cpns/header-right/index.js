@@ -9,7 +9,7 @@ const navigate = useNavigate();
         e.preventDefault();
         console.log(e);
         const query = e.target.elements[0].value;
-        navigate(`/artisan?search=${query}`);
+        navigate(`/artisans?search=${query}`);
     }
 
     return (

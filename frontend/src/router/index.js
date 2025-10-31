@@ -6,7 +6,7 @@ import HomePage from "../views/HomePage";
 
 const routes = [
     {path: "/", element: <HomePage />},
-    {path: "/artisans", element: <div><ArtisanSearchPage /></div>},
+    {path: "/artisans", element: <ArtisanSearchPage />},
     {path: "/artisan/:id", element: <div>artisan</div>},
     {path: "/categorie/:id", element: <CategoriePage />},
     // {path: "", element: <Maintenance />},

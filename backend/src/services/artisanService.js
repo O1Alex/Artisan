@@ -5,6 +5,10 @@ const { deleteArtisanById,
     getArtisanById, 
     } = require("../controllers/artisanController");
 
+const Sequelize = require ('sequelize');
+const Op  = Sequelize.Op;
+
+
 const { Artisan, Specialite, Categorie } = require("../models");
 
 class artisanService {
@@ -20,24 +24,33 @@ class artisanService {
     };
 
 //Récupérer tous les artisans//  
-    static async getAllArtisans(filter= {}, limit, categorie_id){
+    static async getAllArtisans(filters= {}, limit, categorie_id){
         try {
             const include =[{ model : Specialite }];
             if (categorie_id){
                 include[0].where ={categorie_id};
             }        
+    
             const options = { 
                 include,
                 order: [["note", "DESC"]],
             };
-                //Ajout des filtres
-                if (Object.keys(filter).length > 0){
-                    options.where = filter;
-                };
 
-                if(limit){
-                    options.limit = parseInt(limit, 10)
-                };
+            const where = {};
+
+            if (filters.top) {
+                where.top = filters.top;
+            }
+
+             if (filters.nom){
+                where.nom ={[Op.like]: `%${filters.nom}%` };
+            }
+
+            if(limit) {
+                options.limit = parseInt(limit, 10)
+            };
+
+            options.where = Object.keys(filters).length > 0 ? where : undefined;
                 
             const artisans = await Artisan.findAll(options);
             return artisans;
