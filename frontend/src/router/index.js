@@ -1,3 +1,4 @@
+import ArtisanSearchPage from "../views/ArtisanSearchPage";
 import CategoriePage from "../views/CategoriePage";
 import ErrorPage from "../views/ErrorPage";
 import HomePage from "../views/HomePage";
@@ -5,7 +6,7 @@ import HomePage from "../views/HomePage";
 
 const routes = [
     {path: "/", element: <HomePage />},
-    {path: "/artisans", element: <div>artisans</div>},
+    {path: "/artisans", element: <div><ArtisanSearchPage /></div>},
     {path: "/artisan/:id", element: <div>artisan</div>},
     {path: "/categorie/:id", element: <CategoriePage />},
     // {path: "", element: <Maintenance />},

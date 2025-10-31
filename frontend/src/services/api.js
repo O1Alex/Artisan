@@ -27,6 +27,12 @@ const apiService = {
         });
         return res.data.data;
     },
+    getArtisansByName: async (nom) => {
+        const res = await apiClient.get("/artisan", {
+            params: { nom }
+        });
+        return res.data.data;
+    },
 };
 
 export default apiService;

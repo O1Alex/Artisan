@@ -23,9 +23,10 @@ const createArtisan = async(req , res)=> {
 const getAllArtisans = async(req , res)=> {
     try{ 
         const data = matchedData(req, { locations: ["query"] });
-        const { top, limit, categorie_id } = data;
+        const { top, limit, categorie_id, nom } = data;
         const filters ={};
         if (top) filters.top = top;
+        if (nom) filters.nom = nom;
         console.log("filters",filters);
 
         const artisans = await artisanService.getAllArtisans(filters, limit, categorie_id);

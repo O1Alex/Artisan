@@ -19,7 +19,7 @@ const validate = (req, res, next) => {
 const artisanValidator ={
     get: [
         query("top")
-            .notEmpty()
+            .optional()
             .isBoolean()
             .withMessage("Le paramètre 'top' doit etre un booléen")
             .toBoolean(),
@@ -33,6 +33,8 @@ const artisanValidator ={
             .isInt()
             .withMessage("Le parametre 'categorie_id' doit être un entier")
             .toInt(),
+        query("nom")
+            .optional(),
         validate,
     ],
     create: [

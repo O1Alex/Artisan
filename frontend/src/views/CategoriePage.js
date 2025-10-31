@@ -13,6 +13,7 @@ const CategoriePage = memo (() => {
             try {
                 setLoading(true);
                 const categorieResult = await apiService.getCategorieById(id);
+                console.log(categorieResult);
                 setCategorie(categorieResult);
                 const artisansResult = await apiService.getArtisansByCategorieId(id);
                 setArtisans(artisansResult);
@@ -39,7 +40,7 @@ const CategoriePage = memo (() => {
                 <div className='row'>
                     {loading ? (<p>Chargement des artisans...</p>) : 
                     (artisans.map((artisan) => 
-                        (<div key={artisan.id} className='card-container col-md-4'>
+                        (<div key={artisan.id} className='card-container col-12 col-sm-6 col-lg-3 pt-5'>
                             <ArtisanCard artisan={artisan}/>
                         </div>)
                     ))} 
