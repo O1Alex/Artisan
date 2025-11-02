@@ -40,7 +40,9 @@ $danger-color: #cd2c2e;
         background-color: $light-color;
         border : 1px, solid, $dark-color;
         }
-   
+    .nav-link{
+        font-size: large;
+    }
 
 }
 
@@ -109,6 +111,7 @@ $danger-color: #cd2c2e;
         border: 3px solid $dark-color;
         width: 275px;
         box-shadow: 10px 10px 10px $dark-color;
+        text-decoration: none;
         &:hover{
             background-color: $light-color;
         }
@@ -133,6 +136,7 @@ $danger-color: #cd2c2e;
             .artisan-location{
             display: flex;
             justify-content: center;
+            color: $primary-color;
 
             svg{
             margin-right: 0.6rem;
@@ -140,6 +144,7 @@ $danger-color: #cd2c2e;
             top: 3px;
             }
             .artisan-rating{
+                color: $primary-color;
                 svg{
                     color: $primary-color;
                 }
@@ -151,6 +156,7 @@ $danger-color: #cd2c2e;
 //Cards
 .star-rating{
     color: $primary-color;
+
 }
 
 //Categorie Page
@@ -163,6 +169,43 @@ $danger-color: #cd2c2e;
         font-style: italic;
     }
 
+}
+
+//ArtisanSearchPage
+.artisan-header{
+    color: $secondary-color;
+
+}
+
+//ArtisanDetailPage
+.artisan-detail{
+    .artisan-card{
+        border-radius: 20px;
+        width: auto;
+        box-shadow: 10px 10px 10px 5px $dark-color;
+        text-decoration: none;
+        &:hover{
+            background-color: $light-color;
+        }
+    }
+}
+
+//ArtisanSection
+.artisan-siteweb{
+    color: $primary-color;
+    font-weight: bold;
+    font-size: larger;
+    border-bottom: 2px solid $danger-color;
+}
+
+//AboutSection
+.about-title{
+    color: $secondary-color;
+}
+.about-description{
+    color: $primary-color;
+    font-style: italic;
+    font-weight: lighter;
 }
 
 

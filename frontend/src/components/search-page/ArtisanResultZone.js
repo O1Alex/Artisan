@@ -31,16 +31,20 @@ const ArtisanResultZone = memo(({ nom })=>  {
     }
 
     return (
-        <section className='featured-artisans'>
-            <div className='row'>
-                <h1>Le résultat pour les Artisans !</h1>
-                {(artisans.map((artisan) => 
-                    (<div key={artisan.id} className='card-container col-md-3'>
-                        <ArtisanCard artisan={artisan}/>
-                    </div>)
-                ))} 
-            </div>
-        </section> 
+        <div>
+            <section className='artisan-header'>
+                <h1>Ce que l'on vos propose selon votre recherche !</h1>
+            </section>
+            <section className='featured-artisans'>
+                <div className='row justify-content-center pt-5'>  
+                    {(artisans.map((artisan) => 
+                        (<div key={artisan.id} className='card-container col-md-3'>
+                            <ArtisanCard artisan={artisan}/>
+                        </div>)
+                    ))} 
+                </div>
+            </section>
+        </div> 
     );
 });
 

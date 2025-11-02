@@ -17,9 +17,7 @@ const StepsIntroduction = memo (({items}) => {
                 ))}
                 </div>
             </section>
-          
         </div>
-        
     )
 });
 

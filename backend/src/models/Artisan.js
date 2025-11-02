@@ -46,7 +46,6 @@ module.exports = (sequelize)=> {
             validate: {
                 isUrl:true
             }
-            
         },
         top: {
             type: DataTypes.BOOLEAN, 

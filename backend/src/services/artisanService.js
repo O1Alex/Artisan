@@ -23,7 +23,7 @@ class artisanService {
         }
     };
 
-//Récupérer tous les artisans//  
+//Récupérer tous les artisans et les récupérer selon certains filtres//  
     static async getAllArtisans(filters= {}, limit, categorie_id){
         try {
             const include =[{ model : Specialite }];
