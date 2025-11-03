@@ -8,9 +8,9 @@ import './styles/main.scss'
 
 function App() {
   return (
-    <div className="App">
+    <div className="App d-flex flex-column min-vh-100">
       <AppHeader />
-        <div className='page mt-5 mb-'>
+        <div className='page mt-5 flex-fill'>
           {useRoutes(routes)}
         </div>
       <AppFooter />

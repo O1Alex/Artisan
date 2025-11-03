@@ -179,34 +179,202 @@ $danger-color: #cd2c2e;
 
 //ArtisanDetailPage
 .artisan-detail{
+    .artisan-siteweb{
+    color: $secondary-color;
+    font-weight: bold;
+    border-bottom: 2px solid $danger-color;
+    }
+    .card-image{
+        width: 40%;
+    }
     .artisan-card{
         border-radius: 20px;
         width: auto;
         box-shadow: 10px 10px 10px 5px $dark-color;
         text-decoration: none;
-        &:hover{
-            background-color: $light-color;
+        font-size: 20px;
+    
+            .artisan-name{
+                color: $secondary-color;
+                font-weight: bold;
+                font-size: larger;
+            }
+            .artisan-specialite{
+                color: $secondary-color;
+                font-weight: bold;
+                font-size: larger;
+            }
+            .location-text{
+                color: $secondary-color;
+                font-weight: bold;
+                font-size: larger;
+            }
+            .artisan-location{
+            display: flex;
+            justify-content: center;
+            color: $secondary-color;
+
+            svg{
+            margin-right: 0.6rem;
+            position: relative;
+            top: 3px;
+            width: 24px;
+            height: 24px;
+            }
+            .artisan-rating{
+                svg{
+                    color: $primary-color;
+                }
+            }
+        }
+    }
+    .about{
+          .about-title{
+        color: $secondary-color;
+        }
+        .about-description{
+        color: $primary-color;
+        font-style: italic;
+        font-weight: lighter;
         }
     }
 }
 
-//ArtisanSection
-.artisan-siteweb{
-    color: $primary-color;
-    font-weight: bold;
-    font-size: larger;
-    border-bottom: 2px solid $danger-color;
+//Contact
+.contact-form{
+    .artisan-card{
+        border-radius: 20px;
+        width: 100%;
+        box-shadow: 10px 10px 10px 5px $dark-color;
+        font-size: 20px;
+        font-weight: bold;
+        
+        .contact-title {
+        text-align: center;
+        color: $secondary-color; 
+        font-weight: bold;
+        }
+
+    .form-contact {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 2rem;
+
+        // Bloc gauche (champs)
+        .form-input {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        width: 40%;
+
+            .form-element {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+
+                .form-label {
+                width: 30%;
+                color: $secondary-color;
+                }
+
+                .form-control {
+                width: 65%;
+                padding: 6px;
+                border: 1px solid $dark-color;
+                border-radius: 3px;
+                }
+            }
+        }
+
+        //Bouton
+        .btn-submit {
+            align-self: flex-start;
+            background-color: $primary-color;
+            color: $white;
+            border: none;
+            padding: 8px 60px;
+            margin-top: 1rem;
+            margin-left: 230px;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+
+            &:hover {
+            background-color: darken($primary-color, 10%);
+            }
+        }
+        }
+
+        // Bloc droit (zone de texte)
+        .form-text {
+            width: 50%;
+
+        .form-textarea {
+            width: 100%;
+            height: 100%;
+            border: 1px solid $dark-color;
+            border-radius: 3px;
+
+            &:focus {
+            outline: none;
+            border-color: lighten($primary-color, 10%);
+            box-shadow: 0 0 3px lighten($primary-color, 25%);
+            }
+        }
+        }
+     }
 }
 
-//AboutSection
-.about-title{
-    color: $secondary-color;
-}
-.about-description{
-    color: $primary-color;
-    font-style: italic;
-    font-weight: lighter;
-}
+//Contact responsive
+ @media (max-width: 992px) { // Tablettes
+    .form-contact {
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+
+      .form-input,
+      .form-text {
+        width: 100%;
+      }
+
+      .form-element {
+        flex-direction: column;
+        align-items: flex-start;
+
+        .form-label {
+          width: 100%;
+          margin-bottom: 5px;
+        }
+
+        .form-control {
+          width: 100%;
+        }
+      }
+
+      .form-textarea {
+        height: 200px;
+      }
+
+      .btn-submit {
+        align-self: center;
+        margin-top: 0.5rem;
+      }
+    }
+  }
+
+  @media (max-width: 576px) { // Smartphones
+    .contact-title {
+      font-size: 1.2rem;
+    }
+
+    .artisan-card {
+      padding: 1rem;
+    }
+  }
+
+   
 
 
 //Page Erreur
@@ -215,5 +383,12 @@ $danger-color: #cd2c2e;
         font-size: x-large;
         color: $dark-color;
         margin-top: 20px;
+    }
+}
+
+//Page Maintenance
+.maintenance{
+    h1{
+        color: $primary-color;
     }
 }

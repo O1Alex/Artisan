@@ -16,7 +16,6 @@ const ArtisanCardBody = memo(({artisan}) => {
             </div>
             <div className='artisan-rating pb-3'>
                 <StarRating note={artisan?.note} />
-                {artisan?.note}
             </div>
         </>
     );

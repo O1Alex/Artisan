@@ -2,8 +2,8 @@ import React, { memo } from 'react'
 
 const Maintenance = memo(() =>  {
     return (
-        <div>
-            <p>Page en construction</p>
+        <div className='maintenance p-5'>
+            <h1>Page en construction...</h1>
         </div>
     )
 });

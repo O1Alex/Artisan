@@ -7,7 +7,7 @@ import FooterTel from './FooterTel';
 
 const AppFooter = memo(() => {
     return (
-        <footer className="footer">
+        <footer className="footer mt-auto">
 
             <div className="container">
                 <div className="row">

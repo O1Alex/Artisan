@@ -1,5 +1,6 @@
 import axios from "axios";
 
+
 const apiClient = axios.create({
     baseURL:"http://localhost:3000/api",
     timeout: 5000,
@@ -31,6 +32,10 @@ const apiService = {
         const res = await apiClient.get("/artisan", {
             params: { nom }
         });
+        return res.data.data;
+    },
+    getArtisanById: async (id) => {
+        const res = await apiClient.get(`/artisan/${id}`);
         return res.data.data;
     },
 };
