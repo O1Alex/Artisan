@@ -37,5 +37,6 @@ CREATE TABLE contact IF NOT EXISTS (
     FOREIGN KEY (artisan_id) REFERENCES artisan(id),
     client_nom VARCHAR(100) NOT NULL,
     client_email VARCHAR(100) NOT NULL UNIQUE,
-    question VARCHAR(200) NOT NULL,
+    message VARCHAR(400) NOT NULL,
+    objet VARCHAR(100) NOT NULL,
 );

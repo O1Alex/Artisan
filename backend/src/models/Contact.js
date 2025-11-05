@@ -20,6 +20,7 @@ module.exports = (sequelize) => {
             type: DataTypes.STRING(100),
             allownull: false,
         },
+        //Unique enlevé car ne fonctionne pas
         client_email: {
             type: DataTypes.STRING(100),
             allownull: false,
@@ -27,10 +28,14 @@ module.exports = (sequelize) => {
                 isEmail:true,
             },
         },
-        question: {
+        message: {
              type: DataTypes.STRING(200),
             allownull: false,
         },
+        objet:{
+            type: DataTypes.STRING(200),
+            allownull: false,
+        }
     },
     {
       tableName: "contact",

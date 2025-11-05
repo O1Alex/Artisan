@@ -3,7 +3,7 @@ const contactService = require('../services/contactService');
 const createContact = async(req , res)=> {
     try {
         const contactData = req.body;
-
+       
         const newContact = await contactService.createContact(contactData);
          res.json({
         success: true,

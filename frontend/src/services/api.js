@@ -38,6 +38,11 @@ const apiService = {
         const res = await apiClient.get(`/artisan/${id}`);
         return res.data.data;
     },
+
+    createContactForm: async (contactData) => {
+        const res = await apiClient.post("/contact", contactData);
+        return res.data.data;
+    } 
 };
 
 export default apiService;

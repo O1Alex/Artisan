@@ -135,23 +135,31 @@ const categorieValidator ={
 //Concernant les routes de Contact
 const contactValidator ={
     create: [
-        body("client_nom")
+        body("client_Nom")
             .notEmpty()
             .withMessage("Nom recquis.")
             .isLength({ min: 1, max: 60})
             .withMessage("Le nom doit comporter entre 1 et 60 caracteres")
             .escape(),
-        body("client_email")
+        body("client_Email")
             .notEmpty()
             .isEmail()
             .withMessage("Email recquis.")
             .escape(),
-        body("question")
+        body("message")
             .notEmpty()
-            .withMessage("Une question est recquise.")
-            .isLength({ min: 1, max: 100})
+            .withMessage("Un message est recquise.")
+            .isLength({ min: 5, max: 1000})
             .withMessage("La question doit comporter entre 1 et 100 caracteres")
             .escape(),
+        body("objet")
+            .notEmpty()
+            .withMessage("Un objet est recquis.")
+            .escape(),
+        body("artisan_id")
+            .isInt()
+            .withMessage ("ID de l'artisan invalide"),
+
         validate,       
     ],
     getById: [
