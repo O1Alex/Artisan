@@ -289,20 +289,20 @@ $danger-color: #cd2c2e;
 
         //Bouton
         .btn-submit {
-            align-self: flex-start;
             background-color: $primary-color;
             color: $white;
             border: none;
             padding: 8px 60px;
             margin-top: 1rem;
-            margin-left: 230px;
+            margin-left: 240px;
             border-radius: 5px;
             font-weight: 600;
             cursor: pointer;
             transition: background-color 0.2s ease;
+            max-width: 200px;
 
             &:hover {
-            background-color: darken($primary-color, 10%);
+            background-color: $secondary-color;
             }
         }
         }
@@ -311,68 +311,57 @@ $danger-color: #cd2c2e;
         .form-text {
             width: 50%;
 
-        .form-textarea {
-            width: 100%;
-            height: 100%;
-            border: 1px solid $dark-color;
-            border-radius: 3px;
+            .form-textarea {
+                width: 100%;
+                height: 100%;
+                border: 1px solid $dark-color;
+                border-radius: 3px;
 
-            &:focus {
-            outline: none;
-            border-color: lighten($primary-color, 10%);
-            box-shadow: 0 0 3px lighten($primary-color, 25%);
+                &:focus {
+                outline: none;
+                border-color: lighten($primary-color, 10%);
+                box-shadow: 0 0 3px lighten($primary-color, 25%);
+                }
             }
         }
-        }
-     }
+    }
 }
 
 //Contact responsive
- @media (max-width: 992px) { // Tablettes
+ @media (max-width: 992px) { 
     .form-contact {
-      flex-direction: column;
-      align-items: center;
-      gap: 1.5rem;
-
-      .form-input,
-      .form-text {
-        width: 100%;
-      }
-
-      .form-element {
         flex-direction: column;
-        align-items: flex-start;
+        align-items: center;
+        gap: 1.5rem;
 
-        .form-label {
-          width: 100%;
-          margin-bottom: 5px;
+        .form-input{
+            .form-element {
+                flex-direction: column;
+                align-items: flex-start;
+
+                .form-label {
+                width: 100%;
+                margin-bottom: 5px;
+                }
+
+                .form-control {
+                width: 100%;
+                }
+            }
+             .btn-submit {
+            align-self: center;
+            margin-top: 0.5rem;
+            }
         }
 
-        .form-control {
-          width: 100%;
+        .form-text {
+            .form-textarea {
+                height: 200px;
+                width: 100;
+            }
         }
-      }
-
-      .form-textarea {
-        height: 200px;
-      }
-
-      .btn-submit {
-        align-self: center;
-        margin-top: 0.5rem;
-      }
     }
-  }
-
-  @media (max-width: 576px) { // Smartphones
-    .contact-title {
-      font-size: 1.2rem;
-    }
-
-    .artisan-card {
-      padding: 1rem;
-    }
-  }
+}
 
    
 
@@ -389,6 +378,6 @@ $danger-color: #cd2c2e;
 //Page Maintenance
 .maintenance{
     h1{
-        color: $primary-color;
+        color: $secondary-color;
     }
 }

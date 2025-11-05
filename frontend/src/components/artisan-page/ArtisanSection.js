@@ -6,7 +6,7 @@ import AboutSection from './AboutSection';
 const ArtisanSection = memo (({artisan}) => {
     return (
         <div className="container"> 
-            <div className='artisan-card p-4 mb-5 d-flex align-items'>
+            <div className='artisan-card p-4 mb-5 d-flex align-items col-md-6 col-12'>
                 <div className='card-body '>
                     <ArtisanCardBody artisan={artisan} />
                     <div className='artisan-siteweb pb-4'> {artisan?.site_web} </div>
