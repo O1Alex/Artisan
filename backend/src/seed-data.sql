@@ -42,5 +42,5 @@
 ('Valérie Laderoute', 14, 4.5, 'Valence', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus eleifend ante sem, id volutpat massa fermentum nec.', 'v-laredoute@gmail.com', NULL, FALSE),
 ('CM Graphisme', 15, 4.4, 'Valence', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus eleifend ante sem, id volutpat massa fermentum nec.', 'contact@cm-graphisme.com', 'https://cm-graphisme.com', FALSE);
 
-   INSERT INTO contact (artisan_id, client_nom, client_email, question) VALUES
+   INSERT INTO contact (artisan_id, client_nom, client_email, message, objet) VALUES
 
