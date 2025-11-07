@@ -135,13 +135,13 @@ const categorieValidator ={
 //Concernant les routes de Contact
 const contactValidator ={
     create: [
-        body("client_Nom")
+        body("client_nom")
             .notEmpty()
             .withMessage("Nom recquis.")
             .isLength({ min: 1, max: 60})
             .withMessage("Le nom doit comporter entre 1 et 60 caracteres")
             .escape(),
-        body("client_Email")
+        body("client_email")
             .notEmpty()
             .isEmail()
             .withMessage("Email recquis.")

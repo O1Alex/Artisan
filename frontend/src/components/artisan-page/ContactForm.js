@@ -25,8 +25,8 @@ const ContactForm = memo (({artisanId}) => {
         try {
             const contactPayload = {
                 artisan_id: formData.artisan_id,
-                client_Nom: formData.nom,
-                client_Email: formData.email,
+                client_nom: formData.nom,
+                client_email: formData.email,
                 message: formData.message,
                 objet: formData.objet,
             };
@@ -76,7 +76,7 @@ const ContactForm = memo (({artisanId}) => {
                             )}
 
                             <div>{formStatus.message}</div>
-                            <button type='button' className='btn-close' aria-label="Close" onClick={() => setFormStatus({submitted:false, success:false, message:"", })}></button>
+                            <button type='button' className='btn-close' aria-label="Close" onClick={() => setFormStatus({submitted:false})}></button>
                         </div>
                     </div>
                 )}

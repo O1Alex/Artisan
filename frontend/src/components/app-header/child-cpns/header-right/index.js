@@ -13,7 +13,7 @@ const navigate = useNavigate();
     }
 
     return (
-    <div classNameName="search-form">
+    <div className="search-form">
         <form className="d-flex" role="search" onSubmit={handleSearch}>
         <input 
             className="form-control me-2" 
