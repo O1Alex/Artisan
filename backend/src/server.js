@@ -45,7 +45,7 @@ app.use((err, req, res, next)=>{
     console.error('Erreur:' , err)
     res.status(500).json({
       success: false,
-      message: "Erreur server !",
+      message: "Erreur serveur !",
     }) 
 });
 

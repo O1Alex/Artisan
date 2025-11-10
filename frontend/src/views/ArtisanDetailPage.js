@@ -47,7 +47,7 @@ const ArtisanDetailPage = memo (() => {
                 <ArtisanSection artisan={artisan}/>
             </div>
             <div className="contact-form pb-5 mb-4">
-                <ContactForm artisan={artisan}/>
+                <ContactForm artisanId={id}/>
             </div>
         </div>
     

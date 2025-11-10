@@ -17,7 +17,7 @@ $danger-color: #cd2c2e;
 
 //Gobal
 *{
-    font-family: 'Myfont';
+    font-family: 'Myfont', Arial, sans-serif;
 }
 
 
@@ -316,6 +316,7 @@ $danger-color: #cd2c2e;
                 height: 100%;
                 border: 1px solid $dark-color;
                 border-radius: 3px;
+                background-color: $light-color;
 
                 &:focus {
                 outline: none;

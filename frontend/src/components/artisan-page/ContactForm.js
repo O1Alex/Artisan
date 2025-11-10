@@ -30,8 +30,9 @@ const ContactForm = memo (({artisanId}) => {
                 message: formData.message,
                 objet: formData.objet,
             };
-
+            console.log(contactPayload);
             await apiService.createContactForm(contactPayload);
+            console.log("success");
             setFormStatus({
                 submitted: true,
                 success: true,
